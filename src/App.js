@@ -40,7 +40,7 @@ function App() {
   // Call Backend Proxy to create an Account
   const createAccount = (newAccount) => {
     axios
-      .post('Backend URL pending ')
+      .post('Backend URL pending ', newAccount)
       .then( (response) => {
         getAccount();
         console.log('createNewAccount success', response.data);
@@ -52,10 +52,58 @@ function App() {
 
   // Call Backend Proxy to delete an Account
   const deleteAccount = (accountId) => {
-    
+    axios.delete('Pending URL')
+    .then( (response) => {
+      const deleteAccount = selectedAccount.map( account => {
+        if (account.id !== accountId) {
+          return {...account};
+        }
+      });
+      const filteredUpdatedAccounts = deleteAccount.filter(function (element) {
+        return element !== undefined;
+      });
+
+      console.log('deleteCard success!', response.data)
+      setSelectedAccount(filteredUpdatedAccounts);
+    })
+    .catch( (error) => {
+      console.log('Could not delete task', error)
+    });
   }
 
+  // Call Backend Proxy to update account
+  const updateAccount = (accountId, updatedData) => {
+    // Def initial states and update the with useEffect
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [zipcode, setZipcode] = useState('');
 
+    useEffect( () => {
+      const currentuserData = await axios.get('http://127.0.0.1:5000/accounts/123');
+
+      setFirstName(currentuserData.firstName);
+      setLastName(currentuserData.lastName);
+      setEmail(currentuserData.email);
+      setZipcode(currentuserData.zipcode);
+    }, [])
+
+    async function formData() {
+
+    }
+    
+    //   if (updateData === 'email') {
+    //     accountToUpdate.email = updateData;
+    //   } elif (updateData === 'zipcode') {
+    //     accountToUpdate.zipcode = updateData;
+    //   }
+    // }
+    axios.patch('Pending URL', formData)
+    .then( (response) => {
+    })
+  }
+  
+  updateAccount()
   return (
     <div className="App">
       <header className="App-header">
@@ -77,3 +125,5 @@ function App() {
 }
 
 export default App;
+
+
