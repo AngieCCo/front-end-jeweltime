@@ -29,20 +29,20 @@ const NewAccountForm = ({ createNewAccount }) => {
     // Create new account form
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Don't forget to create the createNewAccount function
-        createNewAccount({ firstName, lastName, email, zipcode });
+        // createNewAccount function is an API call in app
+        createNewAccount({ 
+            'firstName':firstName, 'lastName': lastName, 
+            'email': email, 'zipcode': zipcode 
+        });
         setFirstName('');
         setLastName('');
         setEmail('');
         setZipcode('');
     };
 
-    
-    
-
     return (
     <div className="new-account-form__container">
-        <h2 className="newBoard">Create an Account</h2>
+        <h2 className="newAccount">Create an Account</h2>
         <form className="form__container" onSubmit={handleSubmit}>
             <label htmlFor="firstName">First Name</label>
             <textarea
@@ -54,7 +54,6 @@ const NewAccountForm = ({ createNewAccount }) => {
             placeholder="Enter your first name"
             required
             ></textarea>
-            <input type='submit' value='Enter your name!'></input>
         <label htmlFor="lastName">last Name</label>
             <textarea
             type="text"
@@ -65,7 +64,6 @@ const NewAccountForm = ({ createNewAccount }) => {
             placeholder="Enter your last name"
             required
             ></textarea>
-            <input type='submit' value='Enter your last name!'></input>
         <label htmlFor="lastName">Email</label>
             <textarea
             type="text"
@@ -76,7 +74,6 @@ const NewAccountForm = ({ createNewAccount }) => {
             placeholder="Enter your email address"
             required
             ></textarea>
-            <input type='submit' value='Enter your email address!'></input>
         <label htmlFor="zipcode">Zipcode</label>
             <textarea
             type="text"
@@ -87,7 +84,6 @@ const NewAccountForm = ({ createNewAccount }) => {
             placeholder="Enter your zipcode"
             required
             ></textarea>
-            <input type='submit' value='Enter your zipcode!'></input>
         <button type="submit">Create</button>
         </form>
     </div>

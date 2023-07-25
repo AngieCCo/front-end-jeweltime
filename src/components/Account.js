@@ -21,3 +21,5 @@ const accountData = (props) => {
     }
     
 }
+
+export default Account;

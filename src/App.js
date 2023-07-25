@@ -1,11 +1,12 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import './App.css';
 import axios from 'axios';
+import React from 'react'
+import { useState } from 'react';
+import './App.css';
 
-import ProjectList from './components/ProjectList'
+
+// import ProjectList from './components/ProjectList'
 import NewAccountForm from './components/NewAccountForm';
-import NewProjectForm from './components/NewProjectForm';
+// import NewProjectForm from './components/NewProjectForm';
 
 const INITIAL_ACCOUNT_DATA = {
   "account_id": "",
@@ -24,9 +25,10 @@ function App() {
   const [displayedProjects, setDisplayedProjects] = useState(INITIAL_PROJECT_DATA);
 
   // Call Backend Proxy to get Account
+  // Route tested and it's working!!!!
   const getAccount = (accountId) => {
     axios
-    .get('backend URL pending - Route needs ID to make the request')
+    .get('http://127.0.0.1:5000/accounts')
     .then( (response) => {
       const accountUser = response.data
       setSelectedAccount(accountUser)
@@ -38,9 +40,12 @@ function App() {
   };
 
   // Call Backend Proxy to create an Account
-  const createAccount = (newAccount) => {
+  // Route tested and it's working!!!!
+  const createNewAccount = (newAccount) => {
+    console.log('Attempt to call post@@@@@@@@@@@')
+    console.log(newAccount)
     axios
-      .post('Backend URL pending ', newAccount)
+      .post('http://127.0.0.1:5000/accounts', newAccount)
       .then( (response) => {
         getAccount();
         console.log('createNewAccount success', response.data);
@@ -72,25 +77,25 @@ function App() {
   }
 
   // Call Backend Proxy to update account
-  const updateAccount = (accountId, updatedData) => {
-    // Def initial states and update the with useEffect
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [zipcode, setZipcode] = useState('');
+  // const updateAccount = (accountId, updatedData) => {
+  //   // Def initial states and update the with useEffect
+  //   const [firstName, setFirstName] = useState('');
+  //   const [lastName, setLastName] = useState('');
+  //   const [email, setEmail] = useState('');
+  //   const [zipcode, setZipcode] = useState('');
 
-    useEffect( () => {
-      const currentuserData = await axios.get('http://127.0.0.1:5000/accounts/123');
+    // useEffect( () => {
+    //   const currentuserData = await axios.get('http://127.0.0.1:5000/accounts/123');
 
-      setFirstName(currentuserData.firstName);
-      setLastName(currentuserData.lastName);
-      setEmail(currentuserData.email);
-      setZipcode(currentuserData.zipcode);
-    }, [])
+    //   setFirstName(currentuserData.firstName);
+    //   setLastName(currentuserData.lastName);
+    //   setEmail(currentuserData.email);
+    //   setZipcode(currentuserData.zipcode);
+    // }, [])
 
-    async function formData() {
+    // async function formData() {
 
-    }
+    // }
     
     //   if (updateData === 'email') {
     //     accountToUpdate.email = updateData;
@@ -98,28 +103,19 @@ function App() {
     //     accountToUpdate.zipcode = updateData;
     //   }
     // }
-    axios.patch('Pending URL', formData)
-    .then( (response) => {
-    })
-  }
+  //   axios.patch('Pending URL', formData)
+  //   .then( (response) => {
+  //   })
+  // }
   
-  updateAccount()
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <section className='new-account-form__container'>
+            <NewAccountForm createNewAccount={createNewAccount} />
+      </section>
+      <p>Hello world!</p>
     </div>
   );
 }
