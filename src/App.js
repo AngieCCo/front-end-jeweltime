@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import Home from './Home';
-// import NavBar from './components/NavBar';
+import NavBar from './components/NavBar';
 // import ProjectList from './components/ProjectList'
 import NewAccountForm from './components/NewAccountForm';
 // import NewProjectForm from './components/NewProjectForm';
@@ -43,7 +43,6 @@ function App() {
   // Call Backend Proxy to create an Account
   // Route tested and it's working!!!!
   const createNewAccount = (newAccount) => {
-    // console.log('Attempt to call post@@@@@@@@@@@')
     console.log(newAccount)
     axios
       .post('http://127.0.0.1:5000/accounts', newAccount)
@@ -57,6 +56,7 @@ function App() {
   }
 
   // Call Backend Proxy to update account
+  // Route tested and it's working!!!!
   const updateAccount = (account) => {
     // Def initial states and update the with useEffect
     console.log(account)
@@ -95,9 +95,17 @@ function App() {
   
   
   return (
+      
       <div className="App">
         <h1>Jeweltime</h1>
           <div className='content'>
+            {/* <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/signup" element={ <NewAccountForm />} />
+            </Routes> */}
+            <nav className='NavBar'>
+              <NavBar />
+            </nav>
             <section className='new-account-form__container'>
               <NewAccountForm
               selectedAccount={selectedAccount}
@@ -109,6 +117,7 @@ function App() {
         <p>Hello world!</p>
       </div>
   );
+
 }
 
 export default App;

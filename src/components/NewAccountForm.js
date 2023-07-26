@@ -28,7 +28,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount }) =>
     const handleSubmit = (event) => {
         const accountId = selectedAccount.accountId
         event.preventDefault();
-        // createNewAccount function is an API call in app
+        // createNewAccount function is an API call in app for POST
         if (accountId === '' || accountId === undefined) {
             let userData = {
                 'firstName':firstName, 'lastName': lastName, 
@@ -36,6 +36,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount }) =>
             }
             console.log("About to create new one", userData)
             createNewAccount(userData);
+        // updateAccount function is an API call in app for PUT
         } else {
             let userData = {
                 'accountId': accountId, 'firstName':firstName, 
