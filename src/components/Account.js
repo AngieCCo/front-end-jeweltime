@@ -11,14 +11,6 @@ const Account = (props) => {
         props.deleteAccount(props.id)
     };
 
-    // Functions toggleUpdate
-    // Functions linked to API call updateAccount
-    
-    const toggleUpdateZipcode = () => {
-        console.log('Update Zipcode button clicked!')
-        props.updateAccountZipcode(props.id, props.zipcode)
-    }
-
     return (
         <section className='account__container'>
             <Account
@@ -27,12 +19,9 @@ const Account = (props) => {
             lastName={props.lastName}
             email={props.email}
             zipcode={props.zipcode}
-            // updateUnlikes={props.updateUnlikes}
             ></Account>
             <p>{props.firstName}</p>
             <ul>
-                <li>Update your email or zipcode</li>
-                <li><button onClick={toggleUpdateZipcode}>Update Zipcode</button></li>
                 <li><button onClick={toggleDelete}>Delete Account</button></li>
             </ul>
         </section>

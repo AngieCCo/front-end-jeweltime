@@ -6,7 +6,8 @@ import Home from './components/Home';
 import NavBar from './components/NavBar';
 // import ProjectList from './components/ProjectList'
 import NewAccountForm from './components/NewAccountForm';
-// import NewProjectForm from './components/NewProjectForm';
+import NewProjectForm from './components/NewProjectForm';
+import SignIn from './components/SignIn';
 import './App.css';
 
 const INITIAL_ACCOUNT_DATA = {
@@ -99,11 +100,13 @@ function App() {
             </nav>
             <Routes>
               <Route path="/" element={<Home />} />
-            <Route path="/signup" element={ <NewAccountForm 
+              <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
                 createNewAccount={createNewAccount} 
                 updateAccount={updateAccount}
-              />} />
+                />} />
+              <Route path="/newproject" element={ <NewProjectForm/>} />
+              <Route path="/signin" element={ <SignIn/>} />
             </Routes>
           </div>
         <p>Hello world!</p>

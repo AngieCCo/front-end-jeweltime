@@ -12,6 +12,12 @@ function NavBar() {
                 <div className="signUp">
                     <Link to={`signup`}>Sign Up</Link>
                 </div>
+                <div className="newproject">
+                    <Link to={`newproject`}>Create a Project</Link>
+                </div>
+                <div className="signIn">
+                    <Link to={`signin`}>Sign In</Link>
+                </div>
             </nav>
         </>
     )

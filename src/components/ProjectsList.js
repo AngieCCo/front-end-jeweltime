@@ -22,7 +22,6 @@ const ProjectsList = (props) => {
             notes={project.notes}
             // TO BE DEFINED
             deleteProject={props.deleteProject}
-            updateProject={props.updateProject}
             ></Project>
         )
     })
