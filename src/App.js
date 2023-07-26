@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react'
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-// import Home from './Home';
+import Home from './components/Home';
 import NavBar from './components/NavBar';
 // import ProjectList from './components/ProjectList'
 import NewAccountForm from './components/NewAccountForm';
@@ -25,7 +25,6 @@ function App() {
   const [selectedAccount, setSelectedAccount] = useState(INITIAL_ACCOUNT_DATA);
   const [displayedProjects, setDisplayedProjects] = useState(INITIAL_PROJECT_DATA);
 
-  // Call Backend Proxy to get Account
   // Route tested and it's working!!!!
   const getAccount = (accountId) => {
     axios
@@ -40,7 +39,6 @@ function App() {
     })
   };
 
-  // Call Backend Proxy to create an Account
   // Route tested and it's working!!!!
   const createNewAccount = (newAccount) => {
     console.log(newAccount)
@@ -55,7 +53,6 @@ function App() {
       })
   }
 
-  // Call Backend Proxy to update account
   // Route tested and it's working!!!!
   const updateAccount = (account) => {
     // Def initial states and update the with useEffect
@@ -99,27 +96,22 @@ function App() {
       <div className="App">
         <h1>Jeweltime</h1>
           <div className='content'>
-            {/* <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/signup" element={ <NewAccountForm />} />
-            </Routes> */}
             <nav className='NavBar'>
               <NavBar />
             </nav>
-            <section className='new-account-form__container'>
-              <NewAccountForm
-              selectedAccount={selectedAccount}
-              createNewAccount={createNewAccount} 
-              updateAccount={updateAccount}
-              />
-            </section>
+            <Routes>
+              <Route path="/" element={<Home />} />
+            <Route path="/signup" element={ <NewAccountForm 
+                selectedAccount={selectedAccount}
+                createNewAccount={createNewAccount} 
+                updateAccount={updateAccount}
+              />} />
+            </Routes>
           </div>
         <p>Hello world!</p>
       </div>
   );
-
 }
-
 export default App;
 
 

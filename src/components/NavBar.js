@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import NewAccountForm from "./NewAccountForm";
+// import Home from "./Home";
+// import NewAccountForm from "./NewAccountForm";
 import './NavBar.css'
 
 function NavBar() {
@@ -12,13 +12,13 @@ function NavBar() {
                     <Link to={`Home`}>Home</Link>
                 </div>
                 <div className="signUp">
-                    <Link to={`NewAccountForm`}>Sign Up</Link>
+                    <Link to={`signup`}>Sign Up</Link>
                 </div>
             </nav>
-            <Routes>
+            {/* <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/signup" element={ <NewAccountForm />} />
-            </Routes>
+            </Routes> */}
         </>
     )
 }
