@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import './NewAccountForm.css';
 
-const NewAccountForm = ({ createNewAccount }) => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [zipcode, setZipcode] = useState('');
+const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount }) => {
+    const [firstName, setFirstName] = useState(selectedAccount.firstName);
+    const [lastName, setLastName] = useState(selectedAccount.lastName);
+    const [email, setEmail] = useState(selectedAccount.email);
+    const [zipcode, setZipcode] = useState(selectedAccount.zipcode);
     
     // F(x)s that handles user input
     const handleFirstName = (event) => {
@@ -25,25 +24,33 @@ const NewAccountForm = ({ createNewAccount }) => {
         setZipcode(event.target.value);
     };
 
-
     // Create new account form
     const handleSubmit = (event) => {
+        const accountId = selectedAccount.accountId
         event.preventDefault();
         // createNewAccount function is an API call in app
-        createNewAccount({ 
-            'firstName':firstName, 'lastName': lastName, 
-            'email': email, 'zipcode': zipcode 
-        });
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setZipcode('');
+        if (accountId === '' || accountId === undefined) {
+            let userData = {
+                'firstName':firstName, 'lastName': lastName, 
+                'email': email, 'zipcode': zipcode
+            }
+            console.log("About to create new one", userData)
+            createNewAccount(userData);
+        } else {
+            let userData = {
+                'accountId': accountId, 'firstName':firstName, 
+                'lastName': lastName, 'email': email, 'zipcode': zipcode
+            }
+            console.log("About to update account", userData)
+            updateAccount(userData)
+        }
     };
 
     return (
     <div className="new-account-form__container">
         <h2 className="newAccount">Create an Account</h2>
         <form className="form__container" onSubmit={handleSubmit}>
+            <label htmlFor="id" id='accountId'>Account id: {selectedAccount.accountId}</label>
             <label htmlFor="firstName">First Name</label>
             <textarea
             type="text"
@@ -84,7 +91,7 @@ const NewAccountForm = ({ createNewAccount }) => {
             placeholder="Enter your zipcode"
             required
             ></textarea>
-        <button type="submit">Create</button>
+        <button type="submit">Create/Update</button>
         </form>
     </div>
     );
