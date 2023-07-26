@@ -1,7 +1,5 @@
 import React from "react";
-import { Link, Routes, Route } from "react-router-dom";
-// import Home from "./Home";
-// import NewAccountForm from "./NewAccountForm";
+import { Link } from "react-router-dom";
 import './NavBar.css'
 
 function NavBar() {
@@ -15,10 +13,6 @@ function NavBar() {
                     <Link to={`signup`}>Sign Up</Link>
                 </div>
             </nav>
-            {/* <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/signup" element={ <NewAccountForm />} />
-            </Routes> */}
         </>
     )
 }

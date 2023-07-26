@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import './NewProjectForm.css';
 
-const NewAccountForm = ({ createNewProject }) => {
+const NewProjectForm = ({ createNewProject }) => {
     const [projectName, setProjectName] = useState('');
     const [description, setDescription] = useState('');
     const [startedAt, setStartedAt] = useState('');
@@ -14,7 +13,7 @@ const NewAccountForm = ({ createNewProject }) => {
     const [gemstones, setGemstones] = useState('');
     const [shape, setShape] = useState('');
     const [jewelryType, setJewelryType] = useState('');
-
+    const [notes, setNotes] = useState('');
     
     // F(x)s that handles user input
     const handleProjectName = (event) => {
@@ -61,6 +60,10 @@ const NewAccountForm = ({ createNewProject }) => {
         setJewelryType(event.target.value);
     };
 
+    const handleNotes = (event) => {
+        setNotes(event.target.value);
+    };
+
 
     // Create new account form
     const handleSubmit = (event) => {
@@ -71,18 +74,18 @@ const NewAccountForm = ({ createNewProject }) => {
             'startedAt': startedAt, 'completedAt': completedAt,
             'hoursSpent': hoursSpent, 'materialsCost': materialsCost,
             'materials': materials, 'metals': metals, 'gemstones': gemstones,
-            'shape': shape, 'jewelryType': jewelryType
+            'shape': shape, 'jewelryType': jewelryType, 'notes': notes
         });
-        setProjectName('');
-        setDescription('');
-        setCompletedAt('');
-        setHoursSpent('');
-        setMaterialsCost('');
-        setMaterials('');
-        setMetals('');
-        setGemstones('');
-        setShape('');
-        setJewelryType('');
+        // setProjectName('');
+        // setDescription('');
+        // setCompletedAt('');
+        // setHoursSpent('');
+        // setMaterialsCost('');
+        // setMaterials('');
+        // setMetals('');
+        // setGemstones('');
+        // setShape('');
+        // setJewelryType('');
     };
 
     return (
@@ -129,7 +132,7 @@ const NewAccountForm = ({ createNewProject }) => {
             placeholder="Enter finish date"
             required
             ></textarea>
-        <label htmlFor="hoursSpent">Hours spent in this project</label>
+        <label htmlFor="hoursSpent">Hours spent</label>
             <textarea
             type="text"
             id="hoursSpent"
@@ -139,7 +142,7 @@ const NewAccountForm = ({ createNewProject }) => {
             placeholder="Enter total spent hours"
             required
             ></textarea>
-        <label htmlFor="completedAt">Materials costs</label>
+        <label htmlFor="completedAt">Materials' costs</label>
             <textarea
             type="text"
             id="materialsCost"
@@ -149,61 +152,69 @@ const NewAccountForm = ({ createNewProject }) => {
             placeholder="Enter cost of materials"
             required
             ></textarea>
-        {/* Meterials needs to be with input box */}
-        <label htmlFor="materials">Materials used</label>
+        <label htmlFor="materials">Materials list</label>
             <textarea
             type="text"
             id="materials"
-            name="completedAt"
-            value={completedAt}
-            onChange={handleCompletedAt}
+            name="materials"
+            value={materials}
+            onChange={handleMaterials}
             placeholder="Enter finish date"
             required
             ></textarea>
-        <label htmlFor="completedAt">Project completed date</label>
+        <label htmlFor="metals">Metals</label>
             <textarea
             type="text"
-            id="completedAt"
-            name="completedAt"
-            value={completedAt}
-            onChange={handleCompletedAt}
-            placeholder="Enter finish date"
+            id="metals"
+            name="metals"
+            value={metals}
+            onChange={handleMetals}
+            placeholder="Enter list of metals"
             required
             ></textarea>
-        <label htmlFor="completedAt">Project completed date</label>
+        <label htmlFor="gemstones">Gemstones</label>
             <textarea
             type="text"
-            id="completedAt"
-            name="completedAt"
-            value={completedAt}
-            onChange={handleCompletedAt}
-            placeholder="Enter finish date"
+            id="gemstones"
+            name="gemstones"
+            value={gemstones}
+            onChange={handleGemstones}
+            placeholder="Enter list of gemstones"
             required
             ></textarea>
-        <label htmlFor="completedAt">Project completed date</label>
+        <label htmlFor="shape">Shape</label>
             <textarea
             type="text"
-            id="completedAt"
-            name="completedAt"
-            value={completedAt}
-            onChange={handleCompletedAt}
-            placeholder="Enter finish date"
+            id="shape"
+            name="shape"
+            value={shape}
+            onChange={handleShape}
+            placeholder="Enter jewel shape"
             required
             ></textarea>
-        <label htmlFor="completedAt">Project completed date</label>
+        <label htmlFor="jewelryType">Jewelry Type</label>
             <textarea
             type="text"
-            id="completedAt"
-            name="completedAt"
-            value={completedAt}
-            onChange={handleCompletedAt}
-            placeholder="Enter finish date"
+            id="jewelryType"
+            name="jewelryType"
+            value={jewelryType}
+            onChange={handleJewelryType}
+            placeholder="Enter jewelry type"
             required
             ></textarea>
-        <button type="submit">Create</button>
+        <label htmlFor="notes">Notes</label>
+            <textarea
+            type="text"
+            id="notes"
+            name="notes"
+            value={notes}
+            onChange={handleNotes}
+            placeholder="Notes"
+            ></textarea>
+        <button type="submit">Create/Update</button>
         </form>
     </div>
     );
 };
 
-export default NewAccountForm;
+export default NewProjectForm;
