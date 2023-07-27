@@ -18,6 +18,9 @@ function NavBar() {
                 <div className="signIn">
                     <Link to={`signin`}>Sign In</Link>
                 </div>
+                <div className="userProjects">
+                    <Link to={`userprojects`}>Your Projects</Link>
+                </div>
             </nav>
         </>
     )
