@@ -15,10 +15,10 @@ const SignIn = ({ validateUser }) => {
         setPassword(event.target.value);
     };
 
-    // SignIn account
+    // SignIn into account
     const handleSubmit = (event) => {
         event.preventDefault();
-        validateUser({ userName, password });
+        validateUser(userName, password);
         setUserName('');
         setPassword('');
     };

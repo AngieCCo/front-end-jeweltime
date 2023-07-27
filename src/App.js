@@ -90,6 +90,26 @@ function App() {
     });
   }
 
+  // Route to validate sign in
+  const validateUser = (username, password) => {
+
+    const userInfo = {
+      "user": username,
+      "password": password
+    }
+    console.log("user info!:", userInfo)
+    axios
+      .post('http://127.0.0.1:5000/signin', userInfo)
+      .then( (response) => {
+        console.log("response data!", response.data["account"])
+        setSelectedAccount(response.data["account"])
+        console.log('Sign in account success', response.data);
+      })
+      .catch( (error) => {
+        console.log('error', error)
+      })
+  }
+
   return (
       
       <div className="App">
@@ -106,7 +126,9 @@ function App() {
                 updateAccount={updateAccount}
                 />} />
               <Route path="/newproject" element={ <NewProjectForm/>} />
-              <Route path="/signin" element={ <SignIn/>} />
+              <Route path="/signin" element={ <SignIn
+                validateUser={validateUser}
+              />} />
             </Routes>
           </div>
         <p>Hello world!</p>
