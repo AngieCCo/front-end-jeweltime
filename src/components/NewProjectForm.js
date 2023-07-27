@@ -1,91 +1,39 @@
 import React, { useState } from 'react';
 import './NewProjectForm.css';
 
-const NewProjectForm = ({ createNewProject }) => {
-    const [projectName, setProjectName] = useState('');
-    const [description, setDescription] = useState('');
-    const [startedAt, setStartedAt] = useState('');
-    const [completedAt, setCompletedAt] = useState('');
-    const [hoursSpent, setHoursSpent] = useState('');
-    const [materialsCost, setMaterialsCost] = useState('');
-    const [materials, setMaterials] = useState('');
-    const [metals, setMetals] = useState('');
-    const [gemstones, setGemstones] = useState('');
-    const [shape, setShape] = useState('');
-    const [jewelryType, setJewelryType] = useState('');
-    const [notes, setNotes] = useState('');
+const INITIAL_FORM_DATA = {
+    "projectName": '',
+    "description": '',
+    "startedAt": '',
+    "completedAt": '',
+    "hoursSpent": '',
+    "materialsCost": '',
+    "materials": '',
+    "metals": '',
+    "gemstones": '',
+    "shape": '',
+    "jewelryType": '',
+    "notes": ''
+}
+
+const NewProjectForm = (props) => {
+
+    const [projectFormData, setProjectFormData] = useState(INITIAL_FORM_DATA)
     
     // F(x)s that handles user input
-    const handleProjectName = (event) => {
-        setProjectName(event.target.value);
-    };
-    
-    const handleDescription = (event) => {
-        setDescription(event.target.value);
-    };
-
-    const handleStartedAt = (event) => {
-        setStartedAt(event.target.value);
-    };
-
-    const handleCompletedAt = (event) => {
-        setCompletedAt(event.target.value);
-    };
-
-    const handleHoursSpent = (event) => {
-        setHoursSpent(event.target.value);
-    };
-    
-    const handleMaterialsCost = (event) => {
-        setMaterialsCost(event.target.value);
-    };
-
-    const handleMaterials = (event) => {
-        setMaterials(event.target.value);
-    };
-
-    const handleMetals = (event) => {
-        setMetals(event.target.value);
-    };
-
-    const handleGemstones = (event) => {
-        setGemstones(event.target.value);
-    };
-    
-    const handleShape = (event) => {
-        setShape(event.target.value);
-    };
-
-    const handleJewelryType = (event) => {
-        setJewelryType(event.target.value);
-    };
-
-    const handleNotes = (event) => {
-        setNotes(event.target.value);
-    };
-
+    const anInputChanged = (event) => {
+        const newProjectFormData = {
+            ...projectFormData,
+            [event.target.name]: event.target.value
+        };
+        setProjectFormData(newProjectFormData)
+    }
 
     // Create new account form
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Don't forget to create the createNewAccount function
-        createNewProject({ 
-            'projectName': projectName, 'description': description, 
-            'startedAt': startedAt, 'completedAt': completedAt,
-            'hoursSpent': hoursSpent, 'materialsCost': materialsCost,
-            'materials': materials, 'metals': metals, 'gemstones': gemstones,
-            'shape': shape, 'jewelryType': jewelryType, 'notes': notes
-        });
-        // setProjectName('');
-        // setDescription('');
-        // setCompletedAt('');
-        // setHoursSpent('');
-        // setMaterialsCost('');
-        // setMaterials('');
-        // setMetals('');
-        // setGemstones('');
-        // setShape('');
-        // setJewelryType('');
+        props.createNewProject(projectFormData);
+        setProjectFormData(INITIAL_FORM_DATA)
     };
 
     return (
@@ -97,8 +45,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="projectName"
             name="projectName"
-            value={projectName}
-            onChange={handleProjectName}
+            value={projectFormData.projectName}
+            onChange={anInputChanged}
             placeholder="Enter the project's name"
             required
             ></textarea>
@@ -107,8 +55,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="description"
             name="description"
-            value={description}
-            onChange={handleDescription}
+            value={projectFormData.description}
+            onChange={anInputChanged}
             placeholder="Enter description"
             required
             ></textarea>
@@ -117,8 +65,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="startedAt"
             name="startedAt"
-            value={startedAt}
-            onChange={handleStartedAt}
+            value={projectFormData.startedAt}
+            onChange={anInputChanged}
             placeholder="Enter project's starting date"
             required
             ></textarea>
@@ -127,8 +75,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="completedAt"
             name="completedAt"
-            value={completedAt}
-            onChange={handleCompletedAt}
+            value={projectFormData.completedAt}
+            onChange={anInputChanged}
             placeholder="Enter finish date"
             required
             ></textarea>
@@ -137,8 +85,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="hoursSpent"
             name="hoursSpent"
-            value={hoursSpent}
-            onChange={handleHoursSpent}
+            value={projectFormData.hoursSpent}
+            onChange={anInputChanged}
             placeholder="Enter total spent hours"
             required
             ></textarea>
@@ -147,8 +95,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="materialsCost"
             name="magerialsCost"
-            value={materialsCost}
-            onChange={handleMaterialsCost}
+            value={projectFormData.materialsCost}
+            onChange={anInputChanged}
             placeholder="Enter cost of materials"
             required
             ></textarea>
@@ -157,8 +105,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="materials"
             name="materials"
-            value={materials}
-            onChange={handleMaterials}
+            value={projectFormData.materials}
+            onChange={anInputChanged}
             placeholder="Enter finish date"
             required
             ></textarea>
@@ -167,8 +115,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="metals"
             name="metals"
-            value={metals}
-            onChange={handleMetals}
+            value={projectFormData.metals}
+            onChange={anInputChanged}
             placeholder="Enter list of metals"
             required
             ></textarea>
@@ -177,8 +125,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="gemstones"
             name="gemstones"
-            value={gemstones}
-            onChange={handleGemstones}
+            value={projectFormData.gemstones}
+            onChange={anInputChanged}
             placeholder="Enter list of gemstones"
             required
             ></textarea>
@@ -187,8 +135,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="shape"
             name="shape"
-            value={shape}
-            onChange={handleShape}
+            value={projectFormData.shape}
+            onChange={anInputChanged}
             placeholder="Enter jewel shape"
             required
             ></textarea>
@@ -197,8 +145,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="jewelryType"
             name="jewelryType"
-            value={jewelryType}
-            onChange={handleJewelryType}
+            value={projectFormData.jewelryType}
+            onChange={anInputChanged}
             placeholder="Enter jewelry type"
             required
             ></textarea>
@@ -207,8 +155,8 @@ const NewProjectForm = ({ createNewProject }) => {
             type="text"
             id="notes"
             name="notes"
-            value={notes}
-            onChange={handleNotes}
+            value={projectFormData.notes}
+            onChange={anInputChanged}
             placeholder="Notes"
             ></textarea>
         <button type="submit">Create/Update</button>
