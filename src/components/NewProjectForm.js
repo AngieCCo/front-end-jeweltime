@@ -31,9 +31,10 @@ const NewProjectForm = (props) => {
 
     // Create new account form
     const handleSubmit = (event) => {
+        console.log("Handling submit", event)
         event.preventDefault();
         props.createNewProject(projectFormData);
-        setProjectFormData(INITIAL_FORM_DATA)
+        // setProjectFormData(INITIAL_FORM_DATA)
     };
 
     return (
@@ -94,7 +95,7 @@ const NewProjectForm = (props) => {
             <textarea
             type="text"
             id="materialsCost"
-            name="magerialsCost"
+            name="materialsCost"
             value={projectFormData.materialsCost}
             onChange={anInputChanged}
             placeholder="Enter cost of materials"
@@ -107,7 +108,7 @@ const NewProjectForm = (props) => {
             name="materials"
             value={projectFormData.materials}
             onChange={anInputChanged}
-            placeholder="Enter finish date"
+            placeholder="Enter materials used in project"
             required
             ></textarea>
         <label htmlFor="metals">Metals</label>

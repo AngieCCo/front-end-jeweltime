@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
 import NewAccountForm from './components/NewAccountForm';
@@ -19,7 +19,7 @@ const INITIAL_ACCOUNT_DATA = {
   "projects": []
 }
 
-const INITIAL_PROJECT_DATA = [] ;
+const INITIAL_PROJECT_DATA = undefined;
 
 function App() {
 
@@ -112,16 +112,12 @@ function App() {
       })
   }
 
-  // Routes for Projects
+  // Route to create a project working!!!
   const createNewProject = (newProject) => {
-    console.log(selectedAccount.accountId)
+    
     if (selectedAccount.accountId && selectedAccount.accountId !== undefined) {
       newProject["accountId"] = selectedAccount.accountId
-    }
-    else {
-      return "Please Sign Up to create an account"
-    }
-    axios
+      axios
       .post(`http://127.0.0.1:5000/projects`, newProject)
       .then( (response) => {
         setDisplayedProjects(response.data["project"])
@@ -130,41 +126,68 @@ function App() {
       .catch( (error) => {
         console.log('error', error)
       })
+    }
+    else {
+      console.log("Please Sign Up to create an account")
+    } 
   }
 
-  // const getProjects = (accountId) => {
-  //   axios.get(`http://127.0.0.1:5000/accounts/${accountId}`)
-  //   .then( (response) => {
-  //     console.log('getProjects success!', response.data.projects)
-  //     const projectsToDisplay = []
-  //     response.data.projects.forEach(project => {
-  //       projectsToDisplay.push(project)
-  //     });
-  
-  //     setDisplayedProjects(projectsToDisplay);
-  //     setSelectedAccount(response.data)
-  //     console.log('getProjects success!', displayedProjects)
-  //     console.log('getAccount success 2!', selectedAccount)
-  //   })
-  //   .catch( (error) => {
-  //     console.log('error', error)
-  //   })
-  // }
+    // const getProjects = () => {
 
-  // const updateProject = (project) => {
+    //   console.log("Inside getProjects@@@@@@@@@@@@")
+    //   console.log(selectedAccount)
 
-  //   console.log(project)
-  //   const projectId = project.id
-  //   axios
-  //     .put(`http://127.0.0.1:5000/accounts/${accountId}/projects`, project)
-  //     .then( (response) => {
-  //       setDisplayedProjects(response.data)
-  //       console.log('updateAccount success', response.data);
-  //     })
-  //     .catch( (error) => {
-  //       console.log('error', error)
-  //     })
-  // }
+    //   if (selectedAccount.accountId && selectedAccount.accountId !== undefined) {
+    //     const accountId = selectedAccount.accountId
+    //     console.log("account id:", accountId)
+
+    //     // Only if user id is present make the call
+    //     axios
+    //     .get(`http://127.0.0.1:5000/accounts/${accountId}/projects`)
+    //     .then( (response) => {
+          
+    //       console.log("projects user", response.data["projects"])
+          
+    //       setDisplayedProjects(response.data["projects"]);
+    //       // console.log('getProjects success!', displayedProjects)
+    //     })
+    //     .catch( (error) => {
+    //       console.log('error', error)
+    //     })
+    //   } else {
+    //     console.log("Please log in to get acces to your projects")
+    //   }
+    // }
+
+  useEffect(() => {
+    const getProjects = () => {
+
+      console.log("Inside getProjects@@@@@@@@@@@@")
+      console.log(selectedAccount)
+
+      if (selectedAccount.accountId && selectedAccount.accountId !== undefined) {
+        const accountId = selectedAccount.accountId
+        console.log("account id:", accountId)
+
+        // Only if user id is present make the call
+        axios
+        .get(`http://127.0.0.1:5000/accounts/${accountId}/projects`)
+        .then( (response) => {
+          
+          console.log("projects user", response.data["projects"])
+          
+          setDisplayedProjects(response.data["projects"]);
+          // console.log('getProjects success!', displayedProjects)
+        })
+        .catch( (error) => {
+          console.log('error', error)
+        })
+      } else {
+        console.log("Please log in to get acces to your projects")
+      }
+    };
+    getProjects()
+  }, [selectedAccount]);
 
 
   return (

@@ -1,10 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Account.css'
 
 const Account = (props) => {
 
-    // Function toggleDelete
     // Function linked to API call deleteAccount
     const toggleDelete = () => {
         console.log('delete button clicked!')
