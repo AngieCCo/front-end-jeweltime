@@ -175,7 +175,7 @@ function App() {
         
         console.log('updateProject success', response.data);
         const updatedProjects = displayedProjects.map( project => {
-          if (project.id === projectId) {
+          if (project.projectId === projectId) {
             return response.data["project"]
           } else {
             return {...project}
