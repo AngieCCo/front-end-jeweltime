@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './NewAccountForm.css';
 
-const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount }) => {
+const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, deleteAccount }) => {
     const [firstName, setFirstName] = useState(selectedAccount.firstName);
     const [lastName, setLastName] = useState(selectedAccount.lastName);
     const [email, setEmail] = useState(selectedAccount.email);
@@ -45,6 +45,17 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount }) =>
             console.log("About to update account", userData)
             updateAccount(userData)
         }
+    };
+
+    // Function linked to API call deleteAccount
+    const toggleDelete = () => {
+        console.log('delete button clicked!')
+        deleteAccount(selectedAccount.accountId)
+
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setZipcode('');
     };
 
     return (
@@ -94,6 +105,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount }) =>
             ></textarea>
         <button type="submit">Create/Update</button>
         </form>
+        <button onClick={toggleDelete}>Delete Account</button>
     </div>
     );
 };

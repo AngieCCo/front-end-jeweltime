@@ -42,11 +42,9 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
         if (projectFormData.projectId === '' || projectFormData.projectId === undefined) {
             event.preventDefault();
             createNewProject(projectFormData);
-            // setProjectFormData(INITIAL_FORM_DATA)
         } else {
             event.preventDefault();
             updateProject(projectFormData)
-            // setProjectFormData(INITIAL_FORM_DATA)
         }
         
     };

@@ -72,24 +72,21 @@ function App() {
       })
   }
 
-  // Call Backend Proxy to delete an Account
+  // Route tested and it's working!!!
   const deleteAccount = (accountId) => {
-    axios.delete('Pending URL')
+    axios
+    .delete(`http://127.0.0.1:5000/accounts/${accountId}`)
     .then( (response) => {
-      const deleteAccount = selectedAccount.map( account => {
-        if (account.id !== accountId) {
-          return {...account};
-        }
-      });
-      const filteredUpdatedAccounts = deleteAccount.filter(function (element) {
-        return element !== undefined;
-      });
+      console.log("Response!:", response.data)
+      const removedAccount = INITIAL_ACCOUNT_DATA;
+      const removedProjects = INITIAL_PROJECT_DATA
 
-      console.log('deleteCard success!', response.data)
-      setSelectedAccount(filteredUpdatedAccounts);
+      console.log('deleteAccount success!', response.data)
+      setSelectedAccount(removedAccount);
+      setDisplayedProjects(removedProjects)
     })
     .catch( (error) => {
-      console.log('Could not delete task', error)
+      console.log('Could not delete project', error)
     });
   }
 
@@ -220,6 +217,7 @@ function App() {
                 selectedAccount={selectedAccount}
                 createNewAccount={createNewAccount} 
                 updateAccount={updateAccount}
+                deleteAccount={deleteAccount}
                 />} />
               <Route path="/newproject" element={ <NewProjectForm
                 createNewProject={createNewProject}
