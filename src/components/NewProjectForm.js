@@ -16,10 +16,17 @@ const INITIAL_FORM_DATA = {
     "notes": ''
 }
 
-const NewProjectForm = (props) => {
+const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) => {
 
-    const [projectFormData, setProjectFormData] = useState(INITIAL_FORM_DATA)
-    
+    // Set initial values of project BEFORE setting the variable state
+    // If done before avoids re-rendering (looping)
+    let currentProject = INITIAL_FORM_DATA
+    if (selectedProject !== undefined) {
+        currentProject = selectedProject
+    }
+
+    const [projectFormData, setProjectFormData] = useState(currentProject)
+
     // F(x)s that handles user input
     const anInputChanged = (event) => {
         const newProjectFormData = {
@@ -32,15 +39,23 @@ const NewProjectForm = (props) => {
     // Create new account form
     const handleSubmit = (event) => {
         console.log("Handling submit", event)
-        event.preventDefault();
-        props.createNewProject(projectFormData);
-        // setProjectFormData(INITIAL_FORM_DATA)
+        if (projectFormData.projectId === '' || projectFormData.projectId === undefined) {
+            event.preventDefault();
+            createNewProject(projectFormData);
+            // setProjectFormData(INITIAL_FORM_DATA)
+        } else {
+            event.preventDefault();
+            updateProject(projectFormData)
+            // setProjectFormData(INITIAL_FORM_DATA)
+        }
+        
     };
 
     return (
     <div className="new-project-form__container">
         <h2 className="newProject">Create a Project</h2>
         <form className="form__container" onSubmit={handleSubmit}>
+            <label htmlFor="id" id='projectId'>Project id: {projectFormData.projectId}</label>
             <label htmlFor="projectName">Project Name</label>
             <textarea
             type="text"

@@ -25,6 +25,7 @@ function App() {
 
   const [selectedAccount, setSelectedAccount] = useState(INITIAL_ACCOUNT_DATA);
   const [displayedProjects, setDisplayedProjects] = useState(INITIAL_PROJECT_DATA);
+  const [selectedProject, setSelectedProject] = useState(undefined)
 
 
   // Route tested and it's working!!!!
@@ -132,33 +133,7 @@ function App() {
     } 
   }
 
-    // const getProjects = () => {
-
-    //   console.log("Inside getProjects@@@@@@@@@@@@")
-    //   console.log(selectedAccount)
-
-    //   if (selectedAccount.accountId && selectedAccount.accountId !== undefined) {
-    //     const accountId = selectedAccount.accountId
-    //     console.log("account id:", accountId)
-
-    //     // Only if user id is present make the call
-    //     axios
-    //     .get(`http://127.0.0.1:5000/accounts/${accountId}/projects`)
-    //     .then( (response) => {
-          
-    //       console.log("projects user", response.data["projects"])
-          
-    //       setDisplayedProjects(response.data["projects"]);
-    //       // console.log('getProjects success!', displayedProjects)
-    //     })
-    //     .catch( (error) => {
-    //       console.log('error', error)
-    //     })
-    //   } else {
-    //     console.log("Please log in to get acces to your projects")
-    //   }
-    // }
-
+  // Route to get all projects working!!!
   useEffect(() => {
     const getProjects = () => {
 
@@ -183,11 +158,35 @@ function App() {
           console.log('error', error)
         })
       } else {
-        console.log("Please log in to get acces to your projects")
+        console.log("Please log in to get access to your projects")
       }
     };
     getProjects()
   }, [selectedAccount]);
+
+  // Route to update a project
+  const updateProject = (project) => {
+
+    console.log(project)
+    const projectId = project.projectId
+    axios
+      .put(`http://127.0.0.1:5000/projects/${projectId}`, project)
+      .then( (response) => {
+        
+        console.log('updateProject success', response.data);
+        const updatedProjects = displayedProjects.map( project => {
+          if (project.id === projectId) {
+            return response.data["project"]
+          } else {
+            return {...project}
+          }
+        })
+        setDisplayedProjects(updatedProjects)
+      })
+      .catch( (error) => {
+        console.log('error', error)
+      })
+  }
 
 
   return (
@@ -207,9 +206,12 @@ function App() {
                 />} />
               <Route path="/newproject" element={ <NewProjectForm
                 createNewProject={createNewProject}
+                selectedProject={selectedProject}
+                updateProject={updateProject}
               />} />
               <Route path="/userprojects" element={ <ProjectsList
                 displayedProjects={displayedProjects}
+                setSelectedProject={setSelectedProject}
               />} />
               <Route path="/signin" element={ <SignIn
                 validateUser={validateUser}

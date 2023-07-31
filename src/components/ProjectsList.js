@@ -1,7 +1,7 @@
 import React from 'react';
 import Project from './Project'
 
-const ProjectsList = ({ displayedProjects }) => {
+const ProjectsList = ({ displayedProjects, setSelectedProject }) => {
     console.log("starting project list")
     console.log("Received displayedProjects: ", displayedProjects)
 
@@ -11,8 +11,9 @@ const ProjectsList = ({ displayedProjects }) => {
         const listOfProjects = (displayedProjects) => {
             return displayedProjects.map((project) => {
                 return (
-                    <Project key={project.id}
+                    <Project key={project.projectId}
                         project={project}
+                        setSelectedProject={setSelectedProject}
                     ></Project>
                 );
             });

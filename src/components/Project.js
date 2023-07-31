@@ -1,11 +1,20 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import './Project.css'
 
-const Project = ({ project }) => {
+const Project = ({ project, setSelectedProject }) => {
 
     const toggleDelete = () => {
         console.log('delete button clicked!')
         // props.deleteProject()
+    };
+
+    let navigate = useNavigate()
+    const toggleUpdate = () => {
+        console.log('Update button clicked!')
+        setSelectedProject(project)
+        let path = '/newproject';
+        navigate(path);
     };
 
     return (
@@ -25,6 +34,7 @@ const Project = ({ project }) => {
                     <p>Jewelry type: {project.jewelryType}</p>
                     <p>Notes: {project.notes}</p>
                 <li><button onClick={toggleDelete}>Delete</button></li>
+                <li><button onClick={toggleUpdate}>Update</button></li>
             </ul>
         </section>
     )
