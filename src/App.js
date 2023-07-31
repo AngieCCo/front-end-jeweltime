@@ -164,7 +164,7 @@ function App() {
     getProjects()
   }, [selectedAccount]);
 
-  // Route to update a project
+  // Route to update a project works!!!!
   const updateProject = (project) => {
 
     console.log(project)
@@ -188,6 +188,23 @@ function App() {
       })
   }
 
+  // Route to delete a project works!!!
+  const deleteProject = (projectId) => {
+    axios
+    .delete(`http://127.0.0.1:5000/projects/${projectId}`)
+    .then( (response) => {
+      console.log("Response!:", response.data)
+      const updateProjects = displayedProjects.filter(function (displayedProjects) {
+        return displayedProjects.projectId !== projectId;
+      });
+
+      console.log('deleteProject success!', response.data)
+      setDisplayedProjects(updateProjects);
+    })
+    .catch( (error) => {
+      console.log('Could not delete project', error)
+    });
+  }
 
   return (
       
@@ -212,6 +229,7 @@ function App() {
               <Route path="/userprojects" element={ <ProjectsList
                 displayedProjects={displayedProjects}
                 setSelectedProject={setSelectedProject}
+                deleteProject={deleteProject}
               />} />
               <Route path="/signin" element={ <SignIn
                 validateUser={validateUser}

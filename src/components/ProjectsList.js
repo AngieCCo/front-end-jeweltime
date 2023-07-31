@@ -1,7 +1,7 @@
 import React from 'react';
 import Project from './Project'
 
-const ProjectsList = ({ displayedProjects, setSelectedProject }) => {
+const ProjectsList = ({ displayedProjects, setSelectedProject, deleteProject }) => {
     console.log("starting project list")
     console.log("Received displayedProjects: ", displayedProjects)
 
@@ -14,6 +14,7 @@ const ProjectsList = ({ displayedProjects, setSelectedProject }) => {
                     <Project key={project.projectId}
                         project={project}
                         setSelectedProject={setSelectedProject}
+                        deleteProject={deleteProject}
                     ></Project>
                 );
             });

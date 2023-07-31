@@ -27,7 +27,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount }) =>
     // Create new account form
     const handleSubmit = (event) => {
         const accountId = selectedAccount.accountId
-        event.preventDefault();
+        event.preventDefault();  //Put this function inside if and else
         // createNewAccount function is an API call in app for POST
         if (accountId === '' || accountId === undefined) {
             let userData = {

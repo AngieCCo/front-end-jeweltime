@@ -2,11 +2,11 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 import './Project.css'
 
-const Project = ({ project, setSelectedProject }) => {
+const Project = ({ project, setSelectedProject, deleteProject }) => {
 
     const toggleDelete = () => {
         console.log('delete button clicked!')
-        // props.deleteProject()
+        deleteProject(project.projectId)
     };
 
     let navigate = useNavigate()
