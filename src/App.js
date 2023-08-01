@@ -8,6 +8,7 @@ import NewAccountForm from './components/NewAccountForm';
 import NewProjectForm from './components/NewProjectForm';
 import SignIn from './components/SignIn';
 import ProjectsList from './components/ProjectsList';
+import SignUp from './components/SignUp';
 import './App.css';
 
 const INITIAL_ACCOUNT_DATA = {
@@ -234,6 +235,7 @@ function App() {
               />} />
             </Routes>
           </div>
+          <SignUp />
       </div>
   );
 }
