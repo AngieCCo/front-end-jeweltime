@@ -213,7 +213,7 @@ function App() {
               <NavBar />
             </nav>
             <Routes>
-              <Route path="home" element={<Home />} />
+              <Route path="home" element={<Home />}/>
               <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
                 createNewAccount={createNewAccount} 
