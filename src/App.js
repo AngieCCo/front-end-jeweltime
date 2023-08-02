@@ -8,7 +8,10 @@ import NewAccountForm from './components/NewAccountForm';
 import NewProjectForm from './components/NewProjectForm';
 import SignIn from './components/SignIn';
 import ProjectsList from './components/ProjectsList';
+// Components from video
 import SignUp from './components/SignUp';
+import SignInF from './components/SignInF';
+import AuthDetails from './components/AuthDetails';
 import './App.css';
 
 const INITIAL_ACCOUNT_DATA = {
@@ -214,7 +217,7 @@ function App() {
             </nav>
             <Routes>
               <Route path="home" element={<Home />}/>
-              <Route path="/signup" element={ <NewAccountForm 
+              <Route path="/profile" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
                 createNewAccount={createNewAccount} 
                 updateAccount={updateAccount}
@@ -233,9 +236,13 @@ function App() {
               <Route path="/signin" element={ <SignIn
                 validateUser={validateUser}
               />} />
+              <Route path="/signup" element={ <SignUp />} />
             </Routes>
           </div>
-          <SignUp />
+            <div className='w-100' style={ { maxWidth: '400px' }}>
+              <SignInF />
+              <AuthDetails />
+            </div>
       </div>
   );
 }
