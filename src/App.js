@@ -6,12 +6,14 @@ import Home from './components/Home';
 import NavBar from './components/NavBar';
 import NewAccountForm from './components/NewAccountForm';
 import NewProjectForm from './components/NewProjectForm';
-import SignIn from './components/SignIn';
 import ProjectsList from './components/ProjectsList';
 // Components from video
-import SignUp from './components/SignUp';
 import SignInF from './components/SignInF';
 import AuthDetails from './components/AuthDetails';
+
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../src/firebase'
+
 import './App.css';
 
 const INITIAL_ACCOUNT_DATA = {
@@ -20,6 +22,7 @@ const INITIAL_ACCOUNT_DATA = {
   "lastName": "",
   "email": "",
   "zipcode": "",
+  "firebaseId": "",
   "projects": []
 }
 
@@ -33,18 +36,18 @@ function App() {
 
 
   // Route tested and it's working!!!!
-  const getAccount = (accountId) => {
-    axios
-    .get(`http://127.0.0.1:5000/accounts/${accountId}`)
-    .then( (response) => {
-      const accountUser = response.data
-      setSelectedAccount(accountUser)
-      console.log("getAccount success!", selectedAccount)
-    })
-    .catch( (error) => {
-      console.log('error', error)
-    })
-  };
+  // const getAccount = (accountId) => {
+  //   axios
+  //   .get(`http://127.0.0.1:5000/accounts/${accountId}`)
+  //   .then( (response) => {
+  //     const accountUser = response.data
+  //     setSelectedAccount(accountUser)
+  //     console.log("getAccount success!", selectedAccount)
+  //   })
+  //   .catch( (error) => {
+  //     console.log('error', error)
+  //   })
+  // };
 
   // Route tested and it's working!!!!
   const createNewAccount = (newAccount) => {
@@ -61,6 +64,7 @@ function App() {
   }
 
   // Route tested and it's working!!!!
+  // CHANGE ROUTE!!!
   const updateAccount = (account) => {
 
     console.log(account)
@@ -94,26 +98,36 @@ function App() {
     });
   }
 
-  // Route to validate sign in working!!!
-  const validateUser = (username, password) => {
+  // Route to validate sign in!!!
+  const validateUser = (email, password) => {
 
-    const userInfo = {
-      "user": username,
-      "password": password
-    }
-    console.log("user info!:", userInfo)
-    axios
-      .post('http://127.0.0.1:5000/signin', userInfo)
-      .then( (response) => {
-        console.log("response data!", response.data["account"])
-        setSelectedAccount(response.data["account"])
-        console.log('Sign in account success', response.data);
-      })
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          console.log("INSIDE VALIDATE USER")
+          // Signed in 
+          const user = userCredential.user;
+          console.log("userCredential:", user)
+          let userFirebaseId = user.uid
+          console.log("user id!:", userFirebaseId)
+
+          const userId = {"firebaseId": userFirebaseId};
+
+          if (userFirebaseId !== undefined && userFirebaseId !== '') {
+            axios
+              .post(`http://127.0.0.1:5000/signin`, userId)
+              .then( (response) => {
+                console.log("response data!", response.data["account"])
+                setSelectedAccount(response.data["account"])
+                console.log('Sign in account success', response.data);
+              })
+          }
+        })
       .catch( (error) => {
         console.log('error', error)
       })
   }
 
+  
   // Route to create a project working!!!
   const createNewProject = (newProject) => {
     
@@ -217,7 +231,7 @@ function App() {
             </nav>
             <Routes>
               <Route path="home" element={<Home />}/>
-              <Route path="/profile" element={ <NewAccountForm 
+              <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
                 createNewAccount={createNewAccount} 
                 updateAccount={updateAccount}
@@ -228,19 +242,17 @@ function App() {
                 selectedProject={selectedProject}
                 updateProject={updateProject}
               />} />
+              <Route path="/signin" element={ <SignInF
+                validateUser={validateUser}
+              />} />
               <Route path="/userprojects" element={ <ProjectsList
                 displayedProjects={displayedProjects}
                 setSelectedProject={setSelectedProject}
                 deleteProject={deleteProject}
               />} />
-              <Route path="/signin" element={ <SignIn
-                validateUser={validateUser}
-              />} />
-              <Route path="/signup" element={ <SignUp />} />
-            </Routes>
+            </Routes> 
           </div>
             <div className='w-100' style={ { maxWidth: '400px' }}>
-              <SignInF />
               <AuthDetails />
             </div>
       </div>

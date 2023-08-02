@@ -1,30 +1,20 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { auth } from '../firebase'
 
-const SignInF = () => {
+const SignInF = ({ validateUser }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const signIn = (e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
 
-            // Signed in 
-            const user = userCredential.user;
-
-            console.log("userCredential:", user)
-        })
-        .catch((error)=> {
-            console.log(error.message);
-        })
+        // fx validateUSer
+        validateUser(email, password)
     }
 
     return (
         <div className="sign-in-container">
             <form onSubmit={signIn}>
-                <h1>Log In</h1>
+                <h1>Sign In</h1>
                 <label htmlFor="email">Email</label>
                     <textarea
                     type="text"
@@ -45,7 +35,7 @@ const SignInF = () => {
                     placeholder="Enter your password"
                     required
                     ></textarea>
-                <button type="submit">Log In</button>
+                <button type="submit">Sign In</button>
             </form>
         </div>
     )

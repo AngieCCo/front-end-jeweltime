@@ -12,14 +12,11 @@ function NavBar() {
                 <div className="newproject">
                     <Link to={`newproject`}>Create a Project</Link>
                 </div>
-                <div className="profile">
-                    <Link to={`profile`}>Profile</Link>
+                <div className="signup">
+                    <Link to={`signup`}>Sign Up</Link>
                 </div>
                 <div className="signIn">
                     <Link to={`signin`}>Sign In</Link>
-                </div>
-                <div className="signup">
-                    <Link to={`signup`}>Sign Up</Link>
                 </div>
                 <div className="userProjects">
                     <Link to={`userprojects`}>Your Projects</Link>

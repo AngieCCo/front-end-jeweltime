@@ -1,50 +1,43 @@
-import React, { useState } from 'react';
-import './NewAccountForm.css';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
+import { auth } from '../firebase'
 
 const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, deleteAccount }) => {
     const [firstName, setFirstName] = useState(selectedAccount.firstName);
     const [lastName, setLastName] = useState(selectedAccount.lastName);
     const [email, setEmail] = useState(selectedAccount.email);
     const [zipcode, setZipcode] = useState(selectedAccount.zipcode);
+    const [password, setPassword] = useState('');
+    const [firebaseId, setFirebaseId] = useState('');
     
-    // F(x)s that handles user input
-    const handleFirstName = (event) => {
-        setFirstName(event.target.value);
-    };
-    
-    const handleLastName = (event) => {
-        setLastName(event.target.value);
-    };
-
-    const handleEmail = (event) => {
-        setEmail(event.target.value);
-    };
-
-    const handleZipcode = (event) => {
-        setZipcode(event.target.value);
-    };
 
     // Create new account form
-    const handleSubmit = (event) => {
-        const accountId = selectedAccount.accountId
-        event.preventDefault();  //Put this function inside if and else
-        // createNewAccount function is an API call in app for POST
-        if (accountId === '' || accountId === undefined) {
-            let userData = {
-                'firstName':firstName, 'lastName': lastName, 
-                'email': email, 'zipcode': zipcode
-            }
-            console.log("About to create new one", userData)
+    const signUp = (e) => {
+
+        e.preventDefault();
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed In!
+            const user = userCredential.user
+            console.log("Inside sigUp, userId: ", user.uid)
+            let userId = user.uid
+            setFirebaseId(userId)
+            console.log(firebaseId)
+
+            const accountId = selectedAccount.accountId
+            // e.preventDefault(); 
+            if (accountId === '' || accountId === undefined) {
+                let userData = {
+                    'firstName':firstName, 'lastName': lastName, 
+                    'email': email, 'zipcode': zipcode, 'firebaseId': firebaseId
+                }
+            console.log("About to create new user", userData)
             createNewAccount(userData);
-        // updateAccount function is an API call in app for PUT
-        } else {
-            let userData = {
-                'accountId': accountId, 'firstName':firstName, 
-                'lastName': lastName, 'email': email, 'zipcode': zipcode
             }
-            console.log("About to update account", userData)
-            updateAccount(userData)
-        }
+        })
+        .catch((error)=> {
+            console.log(error.message);
+        })
     };
 
     // Function linked to API call deleteAccount
@@ -61,7 +54,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
     return (
     <div className="new-account-form__container">
         <h2 className="newAccount">Create an Account</h2>
-        <form className="form__container" onSubmit={handleSubmit}>
+        <form className="form__container" onSubmit={signUp}>
             <label htmlFor="id" id='accountId'>Account id: {selectedAccount.accountId}</label>
             <label htmlFor="firstName">First Name</label>
             <textarea
@@ -69,7 +62,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
             id="firstName"
             name="firstName"
             value={firstName}
-            onChange={handleFirstName}
+            onChange={(e) => setFirstName(e.target.value)}
             placeholder="Enter your first name"
             required
             ></textarea>
@@ -79,7 +72,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
             id="lastName"
             name="lastName"
             value={lastName}
-            onChange={handleLastName}
+            onChange={(e) => setLastName(e.target.value)}
             placeholder="Enter your last name"
             required
             ></textarea>
@@ -89,7 +82,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
             id="email"
             name="email"
             value={email}
-            onChange={handleEmail}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email address"
             required
             ></textarea>
@@ -99,11 +92,21 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
             id="zipcode"
             name="zipcode"
             value={zipcode}
-            onChange={handleZipcode}
+            onChange={(e) => setZipcode(e.target.value)}
             placeholder="Enter your zipcode"
             required
             ></textarea>
-        <button type="submit">Create/Update</button>
+        <label htmlFor="password">Password</label>
+            <textarea
+            type="text"
+            id="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            required
+            ></textarea>
+        <button type="submit">Create</button>
         </form>
         <button onClick={toggleDelete}>Delete Account</button>
     </div>
