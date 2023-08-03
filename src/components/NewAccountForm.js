@@ -66,7 +66,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
     <div className="new-account-form__container">
         <h2 className="newAccount">Create an Account</h2>
         <form className="form__container" onSubmit={signUp}>
-            <label htmlFor="id" id='accountId'>Account id: {selectedAccount.accountId}</label>
+            {/* <label htmlFor="id" id='accountId'>Account id: {selectedAccount.accountId}</label> */}
             <label htmlFor="firstName">First Name</label>
             <textarea
             type="text"

@@ -43,7 +43,7 @@ function App() {
     axios
       .post('https://jeweltime-api.onrender.com/accounts', newAccount)
       .then( (response) => {
-        setSelectedAccount(response.data["account"])
+        setSelectedAccount(response.data)
         console.log('createNewAccount success', response.data);
       })
       .catch( (error) => {
@@ -103,8 +103,8 @@ function App() {
             axios
               .post(`https://jeweltime-api.onrender.com/signin`, userId)
               .then( (response) => {
-                console.log("response data!", response.data["account"])
-                setSelectedAccount(response.data["account"])
+                console.log("response data!", response.data)
+                setSelectedAccount(response.data)
                 console.log('Sign in account success', response.data);
               })
           }
@@ -122,7 +122,7 @@ function App() {
       axios
       .post(`https://jeweltime-api.onrender.com/projects`, newProject)
       .then( (response) => {
-        setDisplayedProjects(response.data["project"])
+        setDisplayedProjects(response.data)
         console.log('createNewProject success', response.data);
       })
       .catch( (error) => {
@@ -150,9 +150,9 @@ function App() {
         .get(`https://jeweltime-api.onrender.com/accounts/${accountId}/projects`)
         .then( (response) => {
           
-          console.log("projects user", response.data["projects"])
+          console.log("projects user", response.data)
           
-          setDisplayedProjects(response.data["projects"]);
+          setDisplayedProjects(response.data);
           // console.log('getProjects success!', displayedProjects)
         })
         .catch( (error) => {
@@ -177,7 +177,7 @@ function App() {
         console.log('updateProject success', response.data);
         const updatedProjects = displayedProjects.map( project => {
           if (project.projectId === projectId) {
-            return response.data["project"]
+            return response.data
           } else {
             return {...project}
           }
