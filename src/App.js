@@ -38,24 +38,10 @@ function App() {
 
 
   // Route tested and it's working!!!!
-  // const getAccount = (accountId) => {
-  //   axios
-  //   .get(`http://127.0.0.1:5000/accounts/${accountId}`)
-  //   .then( (response) => {
-  //     const accountUser = response.data
-  //     setSelectedAccount(accountUser)
-  //     console.log("getAccount success!", selectedAccount)
-  //   })
-  //   .catch( (error) => {
-  //     console.log('error', error)
-  //   })
-  // };
-
-  // Route tested and it's working!!!!
   const createNewAccount = (newAccount) => {
     console.log(newAccount)
     axios
-      .post('http://127.0.0.1:5000/accounts', newAccount)
+      .post('https://jeweltime-api.onrender.com/accounts', newAccount)
       .then( (response) => {
         setSelectedAccount(response.data["account"])
         console.log('createNewAccount success', response.data);
@@ -71,7 +57,7 @@ function App() {
     console.log(account)
     const accountId = account.accountId
     axios
-      .put(`http://127.0.0.1:5000/accounts/${accountId}`, account)
+      .put(`https://jeweltime-api.onrender.com/accounts/${accountId}`, account)
       .then( (response) => {
         setSelectedAccount(response.data["account"])
         console.log('updateAccount success', response.data);
@@ -84,7 +70,7 @@ function App() {
   // Route tested and it's working!!!
   const deleteAccount = (accountId) => {
     axios
-    .delete(`http://127.0.0.1:5000/accounts/${accountId}`)
+    .delete(`https://jeweltime-api.onrender.com/accounts/${accountId}`)
     .then( (response) => {
       console.log("Response!:", response.data)
       const removedAccount = INITIAL_ACCOUNT_DATA;
@@ -115,7 +101,7 @@ function App() {
 
           if (userFirebaseId !== undefined && userFirebaseId !== '') {
             axios
-              .post(`http://127.0.0.1:5000/signin`, userId)
+              .post(`https://jeweltime-api.onrender.com/signin`, userId)
               .then( (response) => {
                 console.log("response data!", response.data["account"])
                 setSelectedAccount(response.data["account"])
@@ -134,7 +120,7 @@ function App() {
     if (selectedAccount.accountId && selectedAccount.accountId !== undefined) {
       newProject["accountId"] = selectedAccount.accountId
       axios
-      .post(`http://127.0.0.1:5000/projects`, newProject)
+      .post(`https://jeweltime-api.onrender.com/projects`, newProject)
       .then( (response) => {
         setDisplayedProjects(response.data["project"])
         console.log('createNewProject success', response.data);
@@ -161,7 +147,7 @@ function App() {
 
         // Only if user id is present make the call
         axios
-        .get(`http://127.0.0.1:5000/accounts/${accountId}/projects`)
+        .get(`https://jeweltime-api.onrender.com/accounts/${accountId}/projects`)
         .then( (response) => {
           
           console.log("projects user", response.data["projects"])
@@ -185,7 +171,7 @@ function App() {
     console.log(project)
     const projectId = project.projectId
     axios
-      .put(`http://127.0.0.1:5000/projects/${projectId}`, project)
+      .put(`https://jeweltime-api.onrender.com/projects/${projectId}`, project)
       .then( (response) => {
         
         console.log('updateProject success', response.data);
@@ -206,7 +192,7 @@ function App() {
   // Route to delete a project works!!!
   const deleteProject = (projectId) => {
     axios
-    .delete(`http://127.0.0.1:5000/projects/${projectId}`)
+    .delete(`https://jeweltime-api.onrender.com/projects/${projectId}`)
     .then( (response) => {
       console.log("Response!:", response.data)
       const updateProjects = displayedProjects.filter(function (displayedProjects) {
@@ -222,18 +208,18 @@ function App() {
   }
 
   // Route to get Metals, needs testing!
-  // const getMetals = () => {
-  //   axios
-  //   .get(`http://127.0.0.1:5000/metals}`)
-  //   .then( (response) => {
-  //     const metalsR = response.data
-  //     setSelectedAccount(metalsR)
-  //     console.log("getMetals success!", metalsR)
-  //   })
-  //   .catch( (error) => {
-  //     console.log('error', error)
-  //   })
-  // }
+  const getMetals = () => {
+    axios
+    .get(`https://jeweltime-api.onrender.com/metals}`)
+    .then( (response) => {
+      const metalsR = response.data
+      setSelectedAccount(metalsR)
+      console.log("getMetals success!", metalsR)
+    })
+    .catch( (error) => {
+      console.log('error', error)
+    })
+  }
 
   return (
       
