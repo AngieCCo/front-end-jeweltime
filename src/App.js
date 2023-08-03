@@ -33,6 +33,8 @@ function App() {
   const [selectedAccount, setSelectedAccount] = useState(INITIAL_ACCOUNT_DATA);
   const [displayedProjects, setDisplayedProjects] = useState(INITIAL_PROJECT_DATA);
   const [selectedProject, setSelectedProject] = useState(undefined)
+  // Variable to hold object for metals
+  const [metals, setMetals] = useState(undefined)
 
 
   // Route tested and it's working!!!!
@@ -63,7 +65,7 @@ function App() {
       })
   }
 
-  // NEEDS TESTING
+  // Route tested and it's working!!!
   const updateAccount = (account) => {
 
     console.log(account)
@@ -219,6 +221,20 @@ function App() {
     });
   }
 
+  // Route to get Metals, needs testing!
+  // const getMetals = () => {
+  //   axios
+  //   .get(`http://127.0.0.1:5000/metals}`)
+  //   .then( (response) => {
+  //     const metalsR = response.data
+  //     setSelectedAccount(metalsR)
+  //     console.log("getMetals success!", metalsR)
+  //   })
+  //   .catch( (error) => {
+  //     console.log('error', error)
+  //   })
+  // }
+
   return (
       
       <div className="App">
@@ -228,7 +244,10 @@ function App() {
               <NavBar />
             </nav>
             <Routes>
-              <Route path="home" element={<Home />}/>
+              <Route path="home" element={<Home 
+                metals={metals}
+                // getMetals={getMetals}
+              />}/>
               <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
                 createNewAccount={createNewAccount}
