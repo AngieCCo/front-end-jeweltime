@@ -8,36 +8,46 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
     const [email, setEmail] = useState(selectedAccount.email);
     const [zipcode, setZipcode] = useState(selectedAccount.zipcode);
     const [password, setPassword] = useState('');
-    const [firebaseId, setFirebaseId] = useState('');
+    const [firebaseId, setFirebaseId] = useState(selectedAccount.firebaseId);
     
 
     // Create new account form
     const signUp = (e) => {
 
         e.preventDefault();
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed In!
-            const user = userCredential.user
-            console.log("Inside sigUp, userId: ", user.uid)
-            let userId = user.uid
-            setFirebaseId(userId)
-            console.log(firebaseId)
+    
+        const accountId = selectedAccount.accountId 
+        if (accountId === '' || accountId === undefined) {
 
-            const accountId = selectedAccount.accountId
-            // e.preventDefault(); 
-            if (accountId === '' || accountId === undefined) {
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed In!
+                const user = userCredential.user
+                console.log("Inside sigUp, userId: ", user.uid)
+                let userId = user.uid
+                setFirebaseId(userId)
+                console.log(firebaseId)
+
                 let userData = {
                     'firstName':firstName, 'lastName': lastName, 
                     'email': email, 'zipcode': zipcode, 'firebaseId': firebaseId
                 }
-            console.log("About to create new user", userData)
-            createNewAccount(userData);
+                console.log("About to create new user", userData)
+                createNewAccount(userData);
+            })
+            .catch((error)=> {
+                console.log(error.message);
+            })
+
+        } else {
+            let userData = {
+                'accountId': accountId, 'firstName':firstName, 
+                'lastName': lastName, 'zipcode': zipcode, 'firebaseId': firebaseId
             }
-        })
-        .catch((error)=> {
-            console.log(error.message);
-        })
+            console.log("About to update account", userData)
+            updateAccount(userData)
+        }
+        
     };
 
     // Function linked to API call deleteAccount
@@ -50,6 +60,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
         setEmail('');
         setZipcode('');
     };
+
 
     return (
     <div className="new-account-form__container">
@@ -104,9 +115,8 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
-            required
             ></textarea>
-        <button type="submit">Create</button>
+        <button type="submit">Create / Update</button>
         </form>
         <button onClick={toggleDelete}>Delete Account</button>
     </div>

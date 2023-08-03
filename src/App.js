@@ -63,8 +63,7 @@ function App() {
       })
   }
 
-  // Route tested and it's working!!!!
-  // CHANGE ROUTE!!!
+  // NEEDS TESTING
   const updateAccount = (account) => {
 
     console.log(account)
@@ -127,7 +126,6 @@ function App() {
       })
   }
 
-  
   // Route to create a project working!!!
   const createNewProject = (newProject) => {
     
@@ -233,7 +231,7 @@ function App() {
               <Route path="home" element={<Home />}/>
               <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
-                createNewAccount={createNewAccount} 
+                createNewAccount={createNewAccount}
                 updateAccount={updateAccount}
                 deleteAccount={deleteAccount}
                 />} />
