@@ -92,7 +92,6 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
             value={projectFormData.completedAt}
             onChange={anInputChanged}
             placeholder="Enter finish date"
-            required
             ></textarea>
         <label htmlFor="hoursSpent">Hours spent</label>
             <textarea
