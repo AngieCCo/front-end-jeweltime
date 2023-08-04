@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import NewAccountForm from './components/NewAccountForm';
 import NewProjectForm from './components/NewProjectForm';
 import ProjectsList from './components/ProjectsList';
+import MetalList from './components/MetalList';
 // Components from video
 import SignInF from './components/SignInF';
 import AuthDetails from './components/AuthDetails';
@@ -218,6 +219,7 @@ function App() {
     });
   }
 
+<<<<<<< HEAD
   // Route to get Metals, needs testing!
   const getMetals = () => {
     axios
@@ -230,7 +232,42 @@ function App() {
     .catch( (error) => {
       console.log('error', error)
     })
+=======
+  // Function to format metals
+  const formatMetalsData = (metals) => {
+    const metalsNames = ["gold", "silver", "palladium", "alloy"]
+    const metalsFormatted = {}
+    
+    metalsNames.forEach( (metalName) => {
+      metals.forEach( (metal) => {
+        if (metalName in metal) {
+          metalsFormatted[metalName] = parseInt(metal[metalName], 10);
+        }
+      });
+    });
+    console.log(metalsFormatted)
+    return metalsFormatted
+>>>>>>> 1b88eb49e5e427769c0c59a8fca524d71dc0a965
   }
+
+  // Route to get Metals, needs testing!
+  useEffect( () => {
+      // const route = `https://jeweltime-api.onrender.com/metals`;
+      axios
+      .get('http://127.0.0.1:5000/metals')
+      .then( (response) => {
+        const metalsData = response.data.metals
+        console.log("metasdata", metalsData)
+
+        let metalsToRender = formatMetalsData(metalsData)
+        setMetals(metalsToRender)
+        console.log("getMetals success!", metalsToRender)
+      })
+      .catch( (error) => {
+        console.log('error', error)
+      })
+  }, [])
+
 
   return (
       
@@ -241,9 +278,7 @@ function App() {
               <NavBar />
             </nav>
             <Routes>
-              <Route path="home" element={<Home 
-                metals={metals}
-                // getMetals={getMetals}
+              <Route path="home" element={<Home
               />}/>
               <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
@@ -267,6 +302,11 @@ function App() {
               />} />
             </Routes> 
           </div>
+            <div>
+              <MetalList 
+              metals={metals}
+              />
+            </div>
             <div className='w-100' style={ { maxWidth: '400px' }}>
               <AuthDetails />
             </div>

@@ -1,21 +1,21 @@
 import React from 'react';
-import Metal from './Metal'
 
 const MetalList = ({ metals }) => {
     console.log("starting metal list")
     console.log("Received metals: ", metals)
 
-    // const listOfProjects = (displayedProjects) => {
-    //     return displayedProjects.map((project) => {
+     const listOfMetals = (metals) => {
+    //     return metals.map((metal) => {
     //         return (
-    //             <Project key={project.projectId}
-    //                 project={project}
-    //                 setSelectedProject={setSelectedProject}
-    //                 deleteProject={deleteProject}
-    //             ></Project>
+    //             <MetalList
+    //                 metalName={metal.name}
+    //                 metalPrice={metal.price}
+    //             ></MetalList>
     //         );
     //     });
-    // };    
-
+     };
+    return (
+        <ul className='metals'>{listOfMetals(metals)}</ul>
+    )
 };
 export default MetalList;
