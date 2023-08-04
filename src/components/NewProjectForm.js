@@ -38,12 +38,20 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
 
     // Create new account form
     const handleSubmit = (event) => {
+        // ADDITION:
+        event.preventDefault();
         console.log("Handling submit", event)
+
+        // Output the data being sent to the backend
+        console.log("Project Form Data:", projectFormData);
+
         if (projectFormData.projectId === '' || projectFormData.projectId === undefined) {
-            event.preventDefault();
+            // event.preventDefault();
+            console.log("Creating new project...");
             createNewProject(projectFormData);
         } else {
-            event.preventDefault();
+            // event.preventDefault();
+            console.log("Updating project...");
             updateProject(projectFormData)
         }
         

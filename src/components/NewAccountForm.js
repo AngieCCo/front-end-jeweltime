@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from '../firebase'
 
-const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, deleteAccount }) => {
+const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, deleteAccount, setSelectedAccount }) => {
     const [firstName, setFirstName] = useState(selectedAccount.firstName);
     const [lastName, setLastName] = useState(selectedAccount.lastName);
     const [email, setEmail] = useState(selectedAccount.email);
@@ -30,9 +30,14 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
 
                 let userData = {
                     'firstName':firstName, 'lastName': lastName, 
-                    'email': email, 'zipcode': zipcode, 'firebaseId': firebaseId
+                    'email': email, 'zipcode': zipcode,
+                    // CHANGE: USE THE UPDATED USERID DIRECTLY INSTEAD OF USING THE STATE
+                    'firebaseId': userId,
                 }
+
                 console.log("About to create new user", userData)
+
+                // setSelectedAccount(userData)
                 createNewAccount(userData);
             })
             .catch((error)=> {
@@ -46,8 +51,8 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
             }
             console.log("About to update account", userData)
             updateAccount(userData)
+            // setSelectedAccount(userData);
         }
-        
     };
 
     // Function linked to API call deleteAccount

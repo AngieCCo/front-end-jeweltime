@@ -41,23 +41,32 @@ function App() {
   const createNewAccount = (newAccount) => {
     console.log(newAccount)
     axios
-      .post('https://jeweltime-api.onrender.com/accounts', newAccount)
+      .post('http://127.0.0.1:5000/accounts', newAccount)
       .then( (response) => {
         setSelectedAccount(response.data)
         console.log('createNewAccount success', response.data);
+
+        console.log("HERE IS THE SELECTED ACCOUNT STATE VARIABLE&&&&&&&&&&&&&&&&")
+        console.log(selectedAccount);
+
       })
       .catch( (error) => {
         console.log('error', error)
       })
   }
 
+
+  const updateSelectedAccount = (userInfo) => {
+    setSelectedAccount(userInfo);
+  };
+  
   // Route tested and it's working!!!
   const updateAccount = (account) => {
 
     console.log(account)
     const accountId = account.accountId
     axios
-      .put(`https://jeweltime-api.onrender.com/accounts/${accountId}`, account)
+      .put(`http://127.0.0.1:5000/accounts/${accountId}`, account)
       .then( (response) => {
         setSelectedAccount(response.data["account"])
         console.log('updateAccount success', response.data);
@@ -70,7 +79,7 @@ function App() {
   // Route tested and it's working!!!
   const deleteAccount = (accountId) => {
     axios
-    .delete(`https://jeweltime-api.onrender.com/accounts/${accountId}`)
+    .delete(`http://127.0.0.1:5000/accounts/${accountId}`)
     .then( (response) => {
       console.log("Response!:", response.data)
       const removedAccount = INITIAL_ACCOUNT_DATA;
@@ -101,7 +110,7 @@ function App() {
 
           if (userFirebaseId !== undefined && userFirebaseId !== '') {
             axios
-              .post(`https://jeweltime-api.onrender.com/signin`, userId)
+              .post(`http://127.0.0.1:5000/signin`, userId)
               .then( (response) => {
                 console.log("response data!", response.data)
                 setSelectedAccount(response.data)
@@ -116,11 +125,13 @@ function App() {
 
   // Route to create a project working!!!
   const createNewProject = (newProject) => {
-    
+    console.log('THIS IS THE SELECTED ACCOUNT!!!!!!!!!!!!!!!!!')
+    console.log(selectedAccount);
+
     if (selectedAccount.accountId && selectedAccount.accountId !== undefined) {
       newProject["accountId"] = selectedAccount.accountId
       axios
-      .post(`https://jeweltime-api.onrender.com/projects`, newProject)
+      .post(`http://127.0.0.1:5000/projects`, newProject)
       .then( (response) => {
         setDisplayedProjects(response.data)
         console.log('createNewProject success', response.data);
@@ -147,7 +158,7 @@ function App() {
 
         // Only if user id is present make the call
         axios
-        .get(`https://jeweltime-api.onrender.com/accounts/${accountId}/projects`)
+        .get(`http://127.0.0.1:5000/accounts/${accountId}/projects`)
         .then( (response) => {
           
           console.log("projects user", response.data)
@@ -171,7 +182,7 @@ function App() {
     console.log(project)
     const projectId = project.projectId
     axios
-      .put(`https://jeweltime-api.onrender.com/projects/${projectId}`, project)
+      .put(`http://127.0.0.1:5000/projects/${projectId}`, project)
       .then( (response) => {
         
         console.log('updateProject success', response.data);
@@ -192,7 +203,7 @@ function App() {
   // Route to delete a project works!!!
   const deleteProject = (projectId) => {
     axios
-    .delete(`https://jeweltime-api.onrender.com/projects/${projectId}`)
+    .delete(`http://127.0.0.1:5000/projects/${projectId}`)
     .then( (response) => {
       console.log("Response!:", response.data)
       const updateProjects = displayedProjects.filter(function (displayedProjects) {
@@ -210,7 +221,7 @@ function App() {
   // Route to get Metals, needs testing!
   const getMetals = () => {
     axios
-    .get(`https://jeweltime-api.onrender.com/metals}`)
+    .get(`http://127.0.0.1:5000/metals}`)
     .then( (response) => {
       const metalsR = response.data
       setSelectedAccount(metalsR)
@@ -239,6 +250,7 @@ function App() {
                 createNewAccount={createNewAccount}
                 updateAccount={updateAccount}
                 deleteAccount={deleteAccount}
+                setSelectedAccount={updateSelectedAccount}
                 />} />
               <Route path="/newproject" element={ <NewProjectForm
                 createNewProject={createNewProject}
