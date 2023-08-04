@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import NewAccountForm from './components/NewAccountForm';
 import NewProjectForm from './components/NewProjectForm';
 import ProjectsList from './components/ProjectsList';
+import MetalList from './components/MetalList';
 // Components from video
 import SignInF from './components/SignInF';
 import AuthDetails from './components/AuthDetails';
@@ -15,6 +16,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../src/firebase'
 
 import './App.css';
+import MetalList from './components/MetalList';
 
 const INITIAL_ACCOUNT_DATA = {
   "accountId": "",
@@ -207,19 +209,42 @@ function App() {
     });
   }
 
-  // Route to get Metals, needs testing!
-  const getMetals = () => {
-    axios
-    .get(`https://jeweltime-api.onrender.com/metals}`)
-    .then( (response) => {
-      const metalsR = response.data
-      setSelectedAccount(metalsR)
-      console.log("getMetals success!", metalsR)
-    })
-    .catch( (error) => {
-      console.log('error', error)
-    })
+  // Function to format metals
+  const formatMetalsData = (list) => {
+
+    const metalsNames = ["gold", "silver", "palladium"]
+
+    const metalsFormatted = {
+      'name': '',
+      'price': ''
+    }
+    for (const [key, value] of Object.entries(list)) {
+      if (key in metalsNames) {
+        metalsFormatted['name'] = key;
+        metalsFormatted['price'] = parseInt(value, 10);
+      }
+    }
+    console.log(metalsFormatted)
+    return metalsFormatted
   }
+
+  // Route to get Metals, needs testing!
+  useEffect( () => {
+      // const route = `https://jeweltime-api.onrender.com/metals`;
+      axios
+      .get('http://127.0.0.1:5000/metals')
+      .then( (response) => {
+        const metalsData = response.data
+
+        let metalsToRender = formatMetalsData(metalsData)
+        setSelectedAccount(metalsToRender)
+        console.log("getMetals success!", metalsToRender)
+      })
+      .catch( (error) => {
+        console.log('error', error)
+      })
+  }, [])
+
 
   return (
       
@@ -230,9 +255,9 @@ function App() {
               <NavBar />
             </nav>
             <Routes>
-              <Route path="home" element={<Home 
-                metals={metals}
-                // getMetals={getMetals}
+              <Route path="home" element={<Home
+                {/* <MetalList metals={metals} /> */}
+
               />}/>
               <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}

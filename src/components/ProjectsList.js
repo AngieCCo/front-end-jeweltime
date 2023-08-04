@@ -19,7 +19,7 @@ const ProjectsList = ({ displayedProjects, setSelectedProject, deleteProject }) 
                 );
             });
         };
-        return <ul className="tasks__list no-bullet">{listOfProjects(displayedProjects)}</ul>    
+        return <ul className="projects__list no-bullet">{listOfProjects(displayedProjects)}</ul>    
     }
 };
 export default ProjectsList;

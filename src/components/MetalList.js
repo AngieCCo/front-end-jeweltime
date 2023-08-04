@@ -5,17 +5,18 @@ const MetalList = ({ metals }) => {
     console.log("starting metal list")
     console.log("Received metals: ", metals)
 
-    // const listOfProjects = (displayedProjects) => {
-    //     return displayedProjects.map((project) => {
-    //         return (
-    //             <Project key={project.projectId}
-    //                 project={project}
-    //                 setSelectedProject={setSelectedProject}
-    //                 deleteProject={deleteProject}
-    //             ></Project>
-    //         );
-    //     });
-    // };    
-
+    const listOfMetals = (metals) => {
+        return metals.map((metal) => {
+            return (
+                <Metal
+                    metalName={metal.name}
+                    metalPrice={metal.price}
+                ></Metal>
+            );
+        });
+    };
+    return (
+        <ul className='metals'>{listOfMetals(metals)}</ul>
+    )
 };
 export default MetalList;
