@@ -209,20 +209,17 @@ function App() {
   }
 
   // Function to format metals
-  const formatMetalsData = (list) => {
-
-    const metalsNames = ["gold", "silver", "palladium"]
-
-    const metalsFormatted = {
-      'name': '',
-      'price': ''
-    }
-    for (const [key, value] of Object.entries(list)) {
-      if (key in metalsNames) {
-        metalsFormatted['name'] = key;
-        metalsFormatted['price'] = parseInt(value, 10);
-      }
-    }
+  const formatMetalsData = (metals) => {
+    const metalsNames = ["gold", "silver", "palladium", "alloy"]
+    const metalsFormatted = {}
+    
+    metalsNames.forEach( (metalName) => {
+      metals.forEach( (metal) => {
+        if (metalName in metal) {
+          metalsFormatted[metalName] = parseInt(metal[metalName], 10);
+        }
+      });
+    });
     console.log(metalsFormatted)
     return metalsFormatted
   }
@@ -233,7 +230,8 @@ function App() {
       axios
       .get('http://127.0.0.1:5000/metals')
       .then( (response) => {
-        const metalsData = response.data
+        const metalsData = response.data.metals
+        console.log("metasdata", metalsData)
 
         let metalsToRender = formatMetalsData(metalsData)
         setMetals(metalsToRender)
