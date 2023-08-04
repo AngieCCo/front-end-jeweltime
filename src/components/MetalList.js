@@ -1,5 +1,4 @@
 import React from 'react';
-import Metal from './Metal'
 
 const MetalList = ({ metals }) => {
     console.log("starting metal list")
@@ -8,10 +7,10 @@ const MetalList = ({ metals }) => {
     const listOfMetals = (metals) => {
         return metals.map((metal) => {
             return (
-                <Metal
+                <MetalList
                     metalName={metal.name}
                     metalPrice={metal.price}
-                ></Metal>
+                ></MetalList>
             );
         });
     };

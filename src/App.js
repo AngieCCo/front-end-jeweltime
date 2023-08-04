@@ -16,7 +16,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../src/firebase'
 
 import './App.css';
-import MetalList from './components/MetalList';
 
 const INITIAL_ACCOUNT_DATA = {
   "accountId": "",
@@ -237,7 +236,7 @@ function App() {
         const metalsData = response.data
 
         let metalsToRender = formatMetalsData(metalsData)
-        setSelectedAccount(metalsToRender)
+        setMetals(metalsToRender)
         console.log("getMetals success!", metalsToRender)
       })
       .catch( (error) => {
@@ -256,8 +255,6 @@ function App() {
             </nav>
             <Routes>
               <Route path="home" element={<Home
-                {/* <MetalList metals={metals} /> */}
-
               />}/>
               <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
@@ -280,6 +277,11 @@ function App() {
               />} />
             </Routes> 
           </div>
+            <div>
+              <MetalList 
+              metals={metals}
+              />
+            </div>
             <div className='w-100' style={ { maxWidth: '400px' }}>
               <AuthDetails />
             </div>
