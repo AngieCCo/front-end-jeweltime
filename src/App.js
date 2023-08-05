@@ -16,8 +16,8 @@ import { auth } from '../src/firebase'
 
 import './App.css';
 
-// const BACKEND_URL = "http://127.0.0.1:5000";
-const BACKEND_URL = "https://jeweltime-api.onrender.com";
+const BACKEND_URL = "http://127.0.0.1:5000";
+// const BACKEND_URL = "https://jeweltime-api.onrender.com";
 
 const INITIAL_ACCOUNT_DATA = {
   "accountId": "",
@@ -71,7 +71,7 @@ function App() {
     axios
       .put(`${BACKEND_URL}/accounts/${accountId}`, account)
       .then( (response) => {
-        setSelectedAccount(response.data["account"])
+        setSelectedAccount(response.data)
         console.log('updateAccount success', response.data);
       })
       .catch( (error) => {
@@ -153,7 +153,8 @@ function App() {
     const getProjects = () => {
 
       console.log("Inside getProjects@@@@@@@@@@@@")
-      console.log(selectedAccount)
+      console.log("selectedAccount", selectedAccount)
+      console.log("selectedAccount.accountId", selectedAccount.accountId)
 
       if (selectedAccount.accountId && selectedAccount.accountId !== undefined) {
         const accountId = selectedAccount.accountId

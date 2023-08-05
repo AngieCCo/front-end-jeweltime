@@ -3,6 +3,16 @@ import React, { useEffect, useState } from "react";
 
 const auth = getAuth();
 
+const INITIAL_ACCOUNT_DATA = {
+    "accountId": "",
+    "firstName": "",
+    "lastName": "",
+    "email": "",
+    "zipcode": "",
+    "firebaseId": "",
+    "projects": []
+}
+
 const AuthDetails = () => {
 
     const [authUser, setAuthUser] = useState(undefined);
@@ -12,7 +22,7 @@ const AuthDetails = () => {
             if (user) {
                 setAuthUser(user)
             } else {
-                setAuthUser(undefined)
+                setAuthUser(INITIAL_ACCOUNT_DATA)
             }
         });
 
