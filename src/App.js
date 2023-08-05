@@ -219,20 +219,6 @@ function App() {
     });
   }
 
-<<<<<<< HEAD
-  // Route to get Metals, needs testing!
-  const getMetals = () => {
-    axios
-    .get(`http://127.0.0.1:5000/metals}`)
-    .then( (response) => {
-      const metalsR = response.data
-      setSelectedAccount(metalsR)
-      console.log("getMetals success!", metalsR)
-    })
-    .catch( (error) => {
-      console.log('error', error)
-    })
-=======
   // Function to format metals
   const formatMetalsData = (metals) => {
     const metalsNames = ["gold", "silver", "palladium", "platinum"]
@@ -247,7 +233,6 @@ function App() {
     });
     console.log(metalsFormatted)
     return metalsFormatted
->>>>>>> 1b88eb49e5e427769c0c59a8fca524d71dc0a965
   }
 
   // Route to get Metals, working!!!
