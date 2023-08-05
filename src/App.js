@@ -235,7 +235,7 @@ function App() {
 =======
   // Function to format metals
   const formatMetalsData = (metals) => {
-    const metalsNames = ["gold", "silver", "palladium", "alloy"]
+    const metalsNames = ["gold", "silver", "palladium", "platinum"]
     const metalsFormatted = {}
     
     metalsNames.forEach( (metalName) => {
@@ -250,7 +250,7 @@ function App() {
 >>>>>>> 1b88eb49e5e427769c0c59a8fca524d71dc0a965
   }
 
-  // Route to get Metals, needs testing!
+  // Route to get Metals, working!!!
   useEffect( () => {
       // const route = `https://jeweltime-api.onrender.com/metals`;
       axios

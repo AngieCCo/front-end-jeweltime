@@ -4,18 +4,11 @@ const MetalList = ({ metals }) => {
     console.log("starting metal list")
     console.log("Received metals: ", metals)
 
-     const listOfMetals = (metals) => {
-    //     return metals.map((metal) => {
-    //         return (
-    //             <MetalList
-    //                 metalName={metal.name}
-    //                 metalPrice={metal.price}
-    //             ></MetalList>
-    //         );
-    //     });
-     };
+    const metalItems = metals.map( (metal) => (
+        <li>{metal}</li>
+    ));
     return (
-        <ul className='metals'>{listOfMetals(metals)}</ul>
+        <ul className='metals'>{metalItems(metals)}</ul>
     )
 };
 export default MetalList;
