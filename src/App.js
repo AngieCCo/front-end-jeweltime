@@ -7,7 +7,6 @@ import NavBar from './components/NavBar';
 import NewAccountForm from './components/NewAccountForm';
 import NewProjectForm from './components/NewProjectForm';
 import ProjectsList from './components/ProjectsList';
-import MetalList from './components/MetalList';
 // Components from video
 import SignInF from './components/SignInF';
 import AuthDetails from './components/AuthDetails';
@@ -16,6 +15,9 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../src/firebase'
 
 import './App.css';
+
+// const BACKEND_URL = "http://127.0.0.1:5000";
+const BACKEND_URL = "https://jeweltime-api.onrender.com";
 
 const INITIAL_ACCOUNT_DATA = {
   "accountId": "",
@@ -42,7 +44,7 @@ function App() {
   const createNewAccount = (newAccount) => {
     console.log(newAccount)
     axios
-      .post('http://127.0.0.1:5000/accounts', newAccount)
+      .post(`${BACKEND_URL}/accounts`, newAccount)
       .then( (response) => {
         setSelectedAccount(response.data)
         console.log('createNewAccount success', response.data);
@@ -67,7 +69,7 @@ function App() {
     console.log(account)
     const accountId = account.accountId
     axios
-      .put(`http://127.0.0.1:5000/accounts/${accountId}`, account)
+      .put(`${BACKEND_URL}/accounts/${accountId}`, account)
       .then( (response) => {
         setSelectedAccount(response.data["account"])
         console.log('updateAccount success', response.data);
@@ -80,7 +82,7 @@ function App() {
   // Route tested and it's working!!!
   const deleteAccount = (accountId) => {
     axios
-    .delete(`http://127.0.0.1:5000/accounts/${accountId}`)
+    .delete(`${BACKEND_URL}/accounts/${accountId}`)
     .then( (response) => {
       console.log("Response!:", response.data)
       const removedAccount = INITIAL_ACCOUNT_DATA;
@@ -111,7 +113,7 @@ function App() {
 
           if (userFirebaseId !== undefined && userFirebaseId !== '') {
             axios
-              .post(`http://127.0.0.1:5000/signin`, userId)
+              .post(`${BACKEND_URL}/signin`, userId)
               .then( (response) => {
                 console.log("response data!", response.data)
                 setSelectedAccount(response.data)
@@ -132,7 +134,7 @@ function App() {
     if (selectedAccount.accountId && selectedAccount.accountId !== undefined) {
       newProject["accountId"] = selectedAccount.accountId
       axios
-      .post(`http://127.0.0.1:5000/projects`, newProject)
+      .post(`${BACKEND_URL}/projects`, newProject)
       .then( (response) => {
         setDisplayedProjects(response.data)
         console.log('createNewProject success', response.data);
@@ -159,7 +161,7 @@ function App() {
 
         // Only if user id is present make the call
         axios
-        .get(`http://127.0.0.1:5000/accounts/${accountId}/projects`)
+        .get(`${BACKEND_URL}/accounts/${accountId}/projects`)
         .then( (response) => {
           
           console.log("projects user", response.data)
@@ -183,7 +185,7 @@ function App() {
     console.log(project)
     const projectId = project.projectId
     axios
-      .put(`http://127.0.0.1:5000/projects/${projectId}`, project)
+      .put(`${BACKEND_URL}/projects/${projectId}`, project)
       .then( (response) => {
         
         console.log('updateProject success', response.data);
@@ -204,7 +206,7 @@ function App() {
   // Route to delete a project works!!!
   const deleteProject = (projectId) => {
     axios
-    .delete(`http://127.0.0.1:5000/projects/${projectId}`)
+    .delete(`${BACKEND_URL}/projects/${projectId}`)
     .then( (response) => {
       console.log("Response!:", response.data)
       const updateProjects = displayedProjects.filter(function (displayedProjects) {
@@ -218,35 +220,32 @@ function App() {
       console.log('Could not delete project', error)
     });
   }
-
-  // Function to format metals
+  
+  // Function to format metals and exclude the timestamp
   const formatMetalsData = (metals) => {
-    const metalsNames = ["gold", "silver", "palladium", "platinum"]
+    const metalsNames = ["gold", "silver", "platinum", "palladium"]
     const metalsFormatted = {}
     
     metalsNames.forEach( (metalName) => {
       metals.forEach( (metal) => {
-        if (metalName in metal) {
-          metalsFormatted[metalName] = parseInt(metal[metalName], 10);
+        if (metalName in metal  && metalName !== "timestamp") {
+          metalsFormatted[metalName] = parseFloat(metal[metalName]);
         }
       });
     });
-    console.log(metalsFormatted)
+
     return metalsFormatted
   }
 
   // Route to get Metals, working!!!
   useEffect( () => {
-      // const route = `https://jeweltime-api.onrender.com/metals`;
       axios
-      .get('http://127.0.0.1:5000/metals')
+      .get(`${BACKEND_URL}/prices`)
       .then( (response) => {
-        const metalsData = response.data.metals
-        console.log("metasdata", metalsData)
+        const metalsData = response.data;
 
         let metalsToRender = formatMetalsData(metalsData)
         setMetals(metalsToRender)
-        console.log("getMetals success!", metalsToRender)
       })
       .catch( (error) => {
         console.log('error', error)
@@ -264,7 +263,7 @@ function App() {
             </nav>
             <Routes>
               <Route path="home" element={<Home
-              />}/>
+              metals={metals} />}/>
               <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
                 createNewAccount={createNewAccount}
@@ -287,11 +286,6 @@ function App() {
               />} />
             </Routes> 
           </div>
-            <div>
-              <MetalList 
-              metals={metals}
-              />
-            </div>
             <div className='w-100' style={ { maxWidth: '400px' }}>
               <AuthDetails />
             </div>
