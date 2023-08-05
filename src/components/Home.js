@@ -2,10 +2,9 @@ import React from "react";
 
 const Home = ({ metals }) => {
 
-    // Get metals from DB
-    // let gold = metals.gold
-    // let silver = metals.silver
-    // let xxxx = metals.xxxx
+    if (!metals) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div>
@@ -13,13 +12,13 @@ const Home = ({ metals }) => {
             <h1>This is the Home Page!</h1>
             </div>
             <div>
-            {/* <h1>{gold}</h1>
-            <h1>{silver}</h1>
-            <h1>{xxxx}</h1> */}
-            </div>
-            
+                {Object.entries(metals).map(([metalName, metalValue]) => (
+                    <h4 key={metalName}>
+                        {`${metalName.charAt(0).toUpperCase() + metalName.slice(1)}: $${metalValue.toFixed(2)}`}
+                    </h4>
+                ))}
+            </div>  
         </div>
-        
     );
 }
 
