@@ -3,6 +3,11 @@ import React, { useState } from "react";
 const SignInF = ({ validateUser }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const signIn = (e) => {
         e.preventDefault();
@@ -26,16 +31,25 @@ const SignInF = ({ validateUser }) => {
                     required
                     ></textarea>
                 <label htmlFor="password">Password</label>
-                    <textarea
-                    type="text"
-                    id="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter your password"
-                    required
-                    ></textarea>
-                <button type="submit">Sign In</button>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        id="password"
+                        name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Enter your password"
+                        required
+                        ></input>
+                        <span 
+                            style={{ cursor: 'pointer', marginLeft: '10px' }}
+                            onClick={togglePasswordVisibility}
+                        >
+                            {showPassword ? '🙈' : '👁'} 
+                        </span>
+                </div>
+                    
+            <button type="submit">Sign In</button>
             </form>
         </div>
     )

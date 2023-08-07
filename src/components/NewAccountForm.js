@@ -9,6 +9,11 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
     const [zipcode, setZipcode] = useState(selectedAccount.zipcode);
     const [password, setPassword] = useState('');
     const [firebaseId, setFirebaseId] = useState(selectedAccount.firebaseId);
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     // Create new account form
     const signUp = (e) => {
@@ -118,14 +123,22 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
             required
             ></textarea>
         <label htmlFor="password">Password</label>
-            <textarea
-            type="password"
+        <div style={{ display: 'flex', alignItems: 'center' }}> 
+            <input
+            type={showPassword ? "text" : "password"} 
             id="password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
-            ></textarea>
+            ></input>
+            <span 
+                style={{ cursor: 'pointer', marginLeft: '10px' }}
+                onClick={togglePasswordVisibility}
+            >
+                {showPassword ? '🙈' : '👁'} 
+            </span>
+        </div>
         <button type="submit">Create / Update Account</button>
         </form>
         <button onClick={toggleDelete}>Delete Account</button>
