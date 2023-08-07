@@ -136,7 +136,8 @@ function App() {
       axios
       .post(`${BACKEND_URL}/projects`, newProject)
       .then( (response) => {
-        setDisplayedProjects(response.data)
+
+        setDisplayedProjects([response.data])
         console.log('createNewProject success', response.data);
       })
       .catch( (error) => {
@@ -153,7 +154,6 @@ function App() {
     const getProjects = () => {
 
       console.log("Inside getProjects@@@@@@@@@@@@")
-      console.log("selectedAccount", selectedAccount)
       console.log("selectedAccount.accountId", selectedAccount.accountId)
 
       if (selectedAccount.accountId && selectedAccount.accountId !== undefined) {
@@ -168,7 +168,7 @@ function App() {
           console.log("projects user", response.data)
           
           setDisplayedProjects(response.data);
-          // console.log('getProjects success!', displayedProjects)
+          console.log('getProjects success!', displayedProjects)
         })
         .catch( (error) => {
           console.log('error', error)
