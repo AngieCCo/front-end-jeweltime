@@ -137,10 +137,15 @@ function App() {
       .post(`${BACKEND_URL}/projects`, newProject)
       .then( (response) => {
 
+        // This is the new code addition
+        // Here we are cloning displayedprojects and adding the new project
+        // Then resetting the new array to displayedProjects
+
+        // Before I was overwriting displayedProjects with an Object (new single project)
+        // Hence the map function couldn't iterate and it was throwing an error
         const projectsToRender = displayedProjects.map( project => {
             return {...project}
         })
-
         projectsToRender.push(response.data)
         console.log("newDisplayedProjects:", projectsToRender)
         setDisplayedProjects(projectsToRender)
