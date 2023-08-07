@@ -39,7 +39,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
                 createNewAccount(userData);
                 
                 // For alerts
-                alert("Submitting!")
+                alert("New Account Created! ✅")
             })
             .catch((error)=> {
                 console.log(error.message);
@@ -52,6 +52,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
             }
             console.log("About to update account", userData)
             updateAccount(userData)
+            alert("Account Updated! ✅")
             // setSelectedAccount(userData);
         }
     };
@@ -60,11 +61,14 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
     const toggleDelete = () => {
         console.log('delete button clicked!')
         deleteAccount(selectedAccount.accountId)
+        alert("Account Deleted! 🗑️")
 
         setFirstName('');
         setLastName('');
         setEmail('');
         setZipcode('');
+
+
     };
 
 

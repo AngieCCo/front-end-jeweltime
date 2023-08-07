@@ -6,7 +6,8 @@ const Project = ({ project, setSelectedProject, deleteProject }) => {
 
     const toggleDelete = () => {
         console.log('delete button clicked!')
-        deleteProject(project.projectId)
+        deleteProject(project.projectId);
+        alert("Project Deleted! 🗑️")
     };
 
     let navigate = useNavigate()
@@ -15,6 +16,7 @@ const Project = ({ project, setSelectedProject, deleteProject }) => {
         setSelectedProject(project)
         let path = '/newproject';
         navigate(path);
+        alert("Project Updated! ✅")
     };
 
     return (
