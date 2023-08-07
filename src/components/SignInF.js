@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
-import jewelryBench from '../assets/JewelryBench.jpg'; 
+// import jewelryBench from '../assets/JewelryBench.jpg'; 
 
 const SignInF = ({ validateUser }) => {
     const [email, setEmail] = useState('');
