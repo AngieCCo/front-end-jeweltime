@@ -16,7 +16,7 @@ const Project = ({ project, setSelectedProject, deleteProject }) => {
         setSelectedProject(project)
         let path = '/newproject';
         navigate(path);
-        alert("Project Updated! ✅")
+        // alert("Project Updated! ✅")
     };
 
     return (

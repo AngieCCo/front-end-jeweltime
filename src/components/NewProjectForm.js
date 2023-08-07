@@ -54,7 +54,8 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
         } else {
             // event.preventDefault();
             console.log("Updating project...");
-            updateProject(projectFormData)
+            updateProject(projectFormData);
+            alert("Project Updated! ✅")
         }
         
     };
