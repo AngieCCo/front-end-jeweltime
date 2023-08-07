@@ -119,7 +119,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
             ></textarea>
         <label htmlFor="password">Password</label>
             <textarea
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={password}
