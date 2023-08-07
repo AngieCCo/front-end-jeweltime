@@ -137,7 +137,12 @@ function App() {
       .post(`${BACKEND_URL}/projects`, newProject)
       .then( (response) => {
 
-        setDisplayedProjects([response.data])
+        const projectsToRender = displayedProjects.map( project => {
+            return {...project}
+        })
+
+        projectsToRender.push(response.data)
+        setDisplayedProjects(projectsToRender)
         console.log('createNewProject success', response.data);
       })
       .catch( (error) => {
