@@ -142,6 +142,7 @@ function App() {
         })
 
         projectsToRender.push(response.data)
+        console.log("newDisplayedProjects:", projectsToRender)
         setDisplayedProjects(projectsToRender)
         console.log('createNewProject success', response.data);
       })
