@@ -2,8 +2,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from '../firebase'
 
-import GenericModal from "./GenericModal";
-
 const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, deleteAccount, setSelectedAccount }) => {
     const [firstName, setFirstName] = useState(selectedAccount.firstName);
     const [lastName, setLastName] = useState(selectedAccount.lastName);
@@ -11,12 +9,6 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
     const [zipcode, setZipcode] = useState(selectedAccount.zipcode);
     const [password, setPassword] = useState('');
     const [firebaseId, setFirebaseId] = useState(selectedAccount.firebaseId);
-    const [showModal, setShowModal] = useState(false);
-    const [modalTitle, setModalTitle] = useState('');
-    const [modalMessage, setModalMessage] = useState('');
-
-    const handleClose = () => setShowModal(false);
-    
 
     // Create new account form
     const signUp = (e) => {
@@ -43,9 +35,11 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
                 }
 
                 console.log("About to create new user", userData)
-
                 // setSelectedAccount(userData)
                 createNewAccount(userData);
+                
+                // For alerts
+                alert("Submitting!")
             })
             .catch((error)=> {
                 console.log(error.message);
@@ -128,17 +122,10 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
             ></textarea>
-        <button type="submit">Create / Update</button>
+        <button type="submit">Create / Update Account</button>
         </form>
         <button onClick={toggleDelete}>Delete Account</button>
-        <GenericModal 
-            show={showModal} 
-            title={modalTitle}
-            message={modalMessage} 
-            handleClose={handleClose}
-        />
     </div>
     );
 };
-
 export default NewAccountForm;
