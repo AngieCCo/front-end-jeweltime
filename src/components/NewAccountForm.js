@@ -2,6 +2,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from '../firebase'
 
+import GenericModal from "./GenericModal";
+
 const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, deleteAccount, setSelectedAccount }) => {
     const [firstName, setFirstName] = useState(selectedAccount.firstName);
     const [lastName, setLastName] = useState(selectedAccount.lastName);
@@ -9,6 +11,11 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
     const [zipcode, setZipcode] = useState(selectedAccount.zipcode);
     const [password, setPassword] = useState('');
     const [firebaseId, setFirebaseId] = useState(selectedAccount.firebaseId);
+    const [showModal, setShowModal] = useState(false);
+    const [modalTitle, setModalTitle] = useState('');
+    const [modalMessage, setModalMessage] = useState('');
+
+    const handleClose = () => setShowModal(false);
     
 
     // Create new account form
@@ -124,6 +131,12 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
         <button type="submit">Create / Update</button>
         </form>
         <button onClick={toggleDelete}>Delete Account</button>
+        <GenericModal 
+            show={showModal} 
+            title={modalTitle}
+            message={modalMessage} 
+            handleClose={handleClose}
+        />
     </div>
     );
 };
