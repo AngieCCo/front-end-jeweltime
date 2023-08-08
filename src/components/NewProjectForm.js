@@ -62,7 +62,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
     };
 
     return (
-    <div className="d-flex flex-column justify-content-center w-100">
+    <div className="d-grid gap-3 w-100">
         <div className='newProjectForm'>
             <h2 className="newProject">Create a Project</h2>
             <form className="form__container" onSubmit={handleSubmit}>
