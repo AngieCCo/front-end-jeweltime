@@ -1,6 +1,8 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from '../firebase'
+import './NewAccountForm.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, deleteAccount, setSelectedAccount }) => {
     const [firstName, setFirstName] = useState(selectedAccount.firstName);
@@ -78,70 +80,80 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
 
 
     return (
-    <div className="new-account-form__container">
-        <h2 className="newAccount">Create an Account</h2>
-        <form className="form__container" onSubmit={signUp}>
-            {/* <label htmlFor="id" id='accountId'>Account id: {selectedAccount.accountId}</label> */}
-            <label htmlFor="firstName">First Name</label>
-            <textarea
-            type="text"
-            id="firstName"
-            name="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            placeholder="Enter your first name"
-            required
-            ></textarea>
-        <label htmlFor="lastName">last Name</label>
-            <textarea
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            placeholder="Enter your last name"
-            required
-            ></textarea>
-        <label htmlFor="lastName">Email</label>
-            <textarea
-            type="text"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email address"
-            required
-            ></textarea>
-        <label htmlFor="zipcode">Zipcode</label>
-            <textarea
-            type="text"
-            id="zipcode"
-            name="zipcode"
-            value={zipcode}
-            onChange={(e) => setZipcode(e.target.value)}
-            placeholder="Enter your zipcode"
-            required
-            ></textarea>
-        <label htmlFor="password">Password</label>
-        <div style={{ display: 'flex', alignItems: 'center' }}> 
-            <input
-            type={showPassword ? "text" : "password"} 
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            ></input>
-            <span 
-                style={{ cursor: 'pointer', marginLeft: '10px' }}
-                onClick={togglePasswordVisibility}
-            >
-                {showPassword ? '🙈' : '👁'} 
-            </span>
+    <div className="wrapper d-flex align-items-center justify-content-center w-100">
+        <div className="signUp">
+            <h2 className="newAccount">Create an Account</h2>
+            <form className="form__container" onSubmit={signUp}>
+                {/* <label htmlFor="id" id='accountId'>Account id: {selectedAccount.accountId}</label> */}
+                <div className="form-group">
+                    <label htmlFor="firstName" className="form-label">First Name</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder="Enter your first name"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="lastName" className="form-label">last Name</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder="Enter your last name"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="lastName" className="form-label">Email</label>
+                    <input className="form-control"
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address"
+                    required
+                    ></input>
+                </div>
+                <div>
+                    <label htmlFor="zipcode" className="form-label">Zipcode</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="zipcode"
+                    name="zipcode"
+                    value={zipcode}
+                    onChange={(e) => setZipcode(e.target.value)}
+                    placeholder="Enter your zipcode"
+                    required
+                    ></textarea>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <label htmlFor="password" className="form-label">Password</label>
+                    <input className="form-control"
+                    type={showPassword ? "text" : "password"} 
+                    id="password"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password"
+                    ></input>
+                    <span 
+                        style={{ cursor: 'pointer', marginLeft: '10px' }}
+                        onClick={togglePasswordVisibility}
+                    >
+                        {showPassword ? '🙈' : '👁'} 
+                    </span>
+                </div>
+                <button type="submit" className="btn btn-success w-100 mt-2">Create / Update Account</button>
+            </form>
+            <button onClick={toggleDelete} className="btn btn-success w-100 mt-2">Delete Account</button>
         </div>
-        <button type="submit">Create / Update Account</button>
-        </form>
-        <button onClick={toggleDelete}>Delete Account</button>
     </div>
     );
 };

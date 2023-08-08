@@ -20,19 +20,6 @@ const SignInF = ({ validateUser }) => {
 
     return (
         <div className="sign-in-container">
-            {/* <div
-                className = "image"
-                style = {{
-                height: "800px",
-                width: "1100px",
-                backgroundImage:
-                `url(${jewelryBench})`,  
-                backgroundSize: "contain",  
-                backgroundRepeat: "no-repeat",
-                }}
-            >
-                This div contains a background image.
-            </div> */}
             <Card style={{ width: '30rem', margin: 'auto' }} >
                 <Card.Body>
                     <Card.Title>Sign In</Card.Title>

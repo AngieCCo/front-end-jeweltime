@@ -16,8 +16,8 @@ import { auth } from '../src/firebase'
 
 import './App.css';
 
-// const BACKEND_URL = "http://127.0.0.1:5000";
-const BACKEND_URL = "https://jeweltime-api.onrender.com";
+const BACKEND_URL = "http://127.0.0.1:5000";
+// const BACKEND_URL = "https://jeweltime-api.onrender.com";
 
 const INITIAL_ACCOUNT_DATA = {
   "accountId": "",
