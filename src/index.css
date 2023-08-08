@@ -1,23 +1,24 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  /* background-color: #EAC696; */
 
-
-html {
-  background-color: #EAC696;
 }
 
+#root {
+  background: linear-gradient(45deg, #F5E3CC 0%, #7F5539 100%);
+}
+
+/* html {
+  background-color: #EAC696;
+}
 
 body {
   margin: 0;
   background-color: #EAC696;
-
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
-}
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
