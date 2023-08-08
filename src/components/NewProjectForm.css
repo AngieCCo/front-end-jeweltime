@@ -1,0 +1,20 @@
+.d-flex {
+    border-color: #4C4B16;
+    border-radius: 10px;
+    padding-left: 250px;
+    padding-right: 250px;
+}
+
+.newProjectForm {
+    width: 300;
+    padding: 20px;
+    height: min-content;
+    border-radius: 10px;
+    color: black;
+    background-color: rgb(248, 240, 229);
+}
+
+.btn-success {
+    background-color: #7C9D96 !important;
+    border-color: #4C4B16 !important;
+}

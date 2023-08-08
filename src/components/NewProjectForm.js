@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './NewProjectForm.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const INITIAL_FORM_DATA = {
     "projectName": '',
@@ -61,130 +62,156 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
     };
 
     return (
-    <div className="new-project-form__container">
-        <h2 className="newProject">Create a Project</h2>
-        <form className="form__container" onSubmit={handleSubmit}>
-            <label htmlFor="id" id='projectId'>Project id: {projectFormData.projectId}</label>
-            <label htmlFor="projectName">Project Name</label>
-            <textarea
-            type="text"
-            id="projectName"
-            name="projectName"
-            value={projectFormData.projectName}
-            onChange={anInputChanged}
-            placeholder="Enter the project's name"
-            required
-            ></textarea>
-        <label htmlFor="description">Project's description</label>
-            <textarea
-            type="text"
-            id="description"
-            name="description"
-            value={projectFormData.description}
-            onChange={anInputChanged}
-            placeholder="Enter description"
-            required
-            ></textarea>
-        <label htmlFor="startedAt">Started date</label>
-            <textarea
-            type="text"
-            id="startedAt"
-            name="startedAt"
-            value={projectFormData.startedAt}
-            onChange={anInputChanged}
-            placeholder="Enter project's starting date"
-            required
-            ></textarea>
-        <label htmlFor="completedAt">Project completed date</label>
-            <textarea
-            type="text"
-            id="completedAt"
-            name="completedAt"
-            value={projectFormData.completedAt}
-            onChange={anInputChanged}
-            placeholder="Enter finish date"
-            ></textarea>
-        <label htmlFor="hoursSpent">Hours spent</label>
-            <textarea
-            type="text"
-            id="hoursSpent"
-            name="hoursSpent"
-            value={projectFormData.hoursSpent}
-            onChange={anInputChanged}
-            placeholder="Enter total spent hours"
-            required
-            ></textarea>
-        <label htmlFor="completedAt">Materials' costs</label>
-            <textarea
-            type="text"
-            id="materialsCost"
-            name="materialsCost"
-            value={projectFormData.materialsCost}
-            onChange={anInputChanged}
-            placeholder="Enter cost of materials"
-            required
-            ></textarea>
-        <label htmlFor="materials">Materials list</label>
-            <textarea
-            type="text"
-            id="materials"
-            name="materials"
-            value={projectFormData.materials}
-            onChange={anInputChanged}
-            placeholder="Enter materials used in project"
-            required
-            ></textarea>
-        <label htmlFor="metals">Metals</label>
-            <textarea
-            type="text"
-            id="metals"
-            name="metals"
-            value={projectFormData.metals}
-            onChange={anInputChanged}
-            placeholder="Enter list of metals"
-            required
-            ></textarea>
-        <label htmlFor="gemstones">Gemstones</label>
-            <textarea
-            type="text"
-            id="gemstones"
-            name="gemstones"
-            value={projectFormData.gemstones}
-            onChange={anInputChanged}
-            placeholder="Enter list of gemstones"
-            required
-            ></textarea>
-        <label htmlFor="shape">Shape</label>
-            <textarea
-            type="text"
-            id="shape"
-            name="shape"
-            value={projectFormData.shape}
-            onChange={anInputChanged}
-            placeholder="Enter jewel shape"
-            required
-            ></textarea>
-        <label htmlFor="jewelryType">Jewelry Type</label>
-            <textarea
-            type="text"
-            id="jewelryType"
-            name="jewelryType"
-            value={projectFormData.jewelryType}
-            onChange={anInputChanged}
-            placeholder="Enter jewelry type"
-            required
-            ></textarea>
-        <label htmlFor="notes">Notes</label>
-            <textarea
-            type="text"
-            id="notes"
-            name="notes"
-            value={projectFormData.notes}
-            onChange={anInputChanged}
-            placeholder="Notes"
-            ></textarea>
-        <button type="submit">Create/Update</button>
-        </form>
+    <div className="d-flex flex-column justify-content-center w-100">
+        <div className='newProjectForm'>
+            <h2 className="newProject">Create a Project</h2>
+            <form className="form__container" onSubmit={handleSubmit}>
+                {/* <label htmlFor="id" id='projectId'>Project id: {projectFormData.projectId}</label> */}
+                <div className='form-group'>
+                    <label htmlFor="projectName" className="form-label">Project Name</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="projectName"
+                    name="projectName"
+                    value={projectFormData.projectName}
+                    onChange={anInputChanged}
+                    placeholder="Enter the project's name"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="description" className="form-label">Project's description</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="description"
+                    name="description"
+                    value={projectFormData.description}
+                    onChange={anInputChanged}
+                    placeholder="Enter description"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="startedAt" className="form-label">Started date</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="startedAt"
+                    name="startedAt"
+                    value={projectFormData.startedAt}
+                    onChange={anInputChanged}
+                    placeholder="Enter project's starting date"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="completedAt" className="form-label">Project completed date</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="completedAt"
+                    name="completedAt"
+                    value={projectFormData.completedAt}
+                    onChange={anInputChanged}
+                    placeholder="Enter finish date"
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="hoursSpent" className="form-label">Hours spent</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="hoursSpent"
+                    name="hoursSpent"
+                    value={projectFormData.hoursSpent}
+                    onChange={anInputChanged}
+                    placeholder="Enter total spent hours"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="completedAt" className="form-label">Materials' costs</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="materialsCost"
+                    name="materialsCost"
+                    value={projectFormData.materialsCost}
+                    onChange={anInputChanged}
+                    placeholder="Enter cost of materials"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="materials" className="form-label">Materials list</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="materials"
+                    name="materials"
+                    value={projectFormData.materials}
+                    onChange={anInputChanged}
+                    placeholder="Enter materials used in project"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="metals" className="form-label">Metals</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="metals"
+                    name="metals"
+                    value={projectFormData.metals}
+                    onChange={anInputChanged}
+                    placeholder="Enter list of metals"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="gemstones" className="form-label">Gemstones</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="gemstones"
+                    name="gemstones"
+                    value={projectFormData.gemstones}
+                    onChange={anInputChanged}
+                    placeholder="Enter list of gemstones"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="shape" className="form-label">Shape</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="shape"
+                    name="shape"
+                    value={projectFormData.shape}
+                    onChange={anInputChanged}
+                    placeholder="Enter jewel shape"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="jewelryType" className="form-label">Jewelry Type</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="jewelryType"
+                    name="jewelryType"
+                    value={projectFormData.jewelryType}
+                    onChange={anInputChanged}
+                    placeholder="Enter jewelry type"
+                    required
+                    ></textarea>
+                </div>
+                <div>
+                    <label htmlFor="notes" className="form-label">Notes</label>
+                    <textarea className="form-control"
+                    type="text"
+                    id="notes"
+                    name="notes"
+                    value={projectFormData.notes}
+                    onChange={anInputChanged}
+                    placeholder="Notes"
+                    ></textarea>
+                </div>
+            <button type="submit" className="btn btn-success w-100 mt-2">Create/Update</button>
+            </form>
+        </div>
     </div>
     );
 };

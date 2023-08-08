@@ -1,5 +1,6 @@
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const auth = getAuth();
 
