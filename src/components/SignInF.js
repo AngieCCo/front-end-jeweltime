@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
+import './SignInF.css'
 // import jewelryBench from '../assets/JewelryBench.jpg'; 
 
 const SignInF = ({ validateUser }) => {
@@ -21,7 +22,8 @@ const SignInF = ({ validateUser }) => {
     return (
         <div className="sign-in-container">
             <Card style={{ width: '30rem', margin: 'auto' }} >
-                <Card.Body>
+            <div className="signIn-form">
+            <Card.Body>
                     <Card.Title>Sign In</Card.Title>
                     <form onSubmit={signIn}>
                     {/* <h1>Sign In</h1> */}
@@ -56,9 +58,10 @@ const SignInF = ({ validateUser }) => {
                                     {showPassword ? '🙈' : '👁'} 
                                 </span>
                         </div>  
-                    <button type="submit">Sign In</button>
+                    <button type="submit" className="btn btn-success w-100 mt-2">Sign In</button>
                 </form>
                 </Card.Body>
+            </div>
             </Card>
         </div>
     )
