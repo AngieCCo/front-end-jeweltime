@@ -150,6 +150,7 @@ function App() {
         console.log("newDisplayedProjects:", projectsToRender)
         setDisplayedProjects(projectsToRender)
         console.log('createNewProject success', response.data);
+        setSelectedProject(INITIAL_PROJECT_DATA)
       })
       .catch( (error) => {
         console.log('error', error)
@@ -209,6 +210,7 @@ function App() {
           }
         })
         setDisplayedProjects(updatedProjects)
+        setSelectedProject(INITIAL_PROJECT_DATA)
       })
       .catch( (error) => {
         console.log('error', error)
