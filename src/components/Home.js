@@ -1,9 +1,25 @@
 import React from "react";
-import { Container, Row, Col } from 'react-bootstrap'; 
+import { Card, Container, Row, Col } from 'react-bootstrap'; 
 import './Home.css'; 
 
 import jewelryBenchImg from '../assets/JewelryBench.jpg';
 import ringImg from '../assets/SapphireRing.jpg'
+
+import goldImg from '../assets/metalsGold.png';
+import silverImg from '../assets/metalsSilver.png';
+import platinumImg from '../assets/metalsPlatinum.png';
+import palladiumImg from '../assets/metalsPalladium.png';
+
+const metalImages = {
+    gold: goldImg,
+    silver: silverImg,
+    platinum: platinumImg,
+    palladium: palladiumImg
+};
+
+function capitalizeFirstLetter(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+}
 
 const Home = ({ metals }) => {
 
@@ -65,12 +81,24 @@ const Home = ({ metals }) => {
             </Row>
             {/* Row 6 */}
             <Row className="mt-5 mb-5">
-                <Col xs={1}></Col>
-                <Col xs={2}>Card 1: Gold</Col>
-                <Col xs={2}>Card 2: Silver</Col>
-                <Col xs={2}>Card 3: Platinum</Col>
-                <Col xs={2}>Card 4: Palladium</Col>
-                <Col xs={1}></Col>
+                <Col xs={12} className="d-flex justify-content-center mb-4">
+                    <h2 className="metal-cards-title">
+                        Precious Metal Prices
+                    </h2>
+                </Col>
+                <Col xs={12} className="d-flex justify-content-center">
+                    {Object.entries(metals).map(([metalName, metalValue]) => (
+                        <Col xs={12} sm={6} md={4} lg={3} xl={2} key={metalName}>
+                            <Card className="metal-card">
+                                <Card.Img className="card-image" variant="top" src={metalImages[metalName]} />
+                                <Card.Body className="d-flex flex-column align-items-center">
+                                    <Card.Title>{`${capitalizeFirstLetter(metalName)}:`}</Card.Title>
+                                    <Card.Text>${metalValue.toFixed(2)}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Col>
             </Row>
             {/* Row 7 */}
             <Row className="mt-5 mb-5">
@@ -80,21 +108,6 @@ const Home = ({ metals }) => {
             </Row>
         </Container>
     );
-
-    // return (
-    //     <div>
-    //         <div>
-    //         <h1>This is the Home Page!</h1>
-    //         </div>
-    //         <div>
-    //             {Object.entries(metals).map(([metalName, metalValue]) => (
-    //                 <h4 key={metalName}>
-    //                     {`${metalName.charAt(0).toUpperCase() + metalName.slice(1)}: $${metalValue.toFixed(2)}`}
-    //                 </h4>
-    //             ))}
-    //         </div>  
-    //     </div>
-    // );
 }
 
 export default Home;
