@@ -19,12 +19,16 @@ const Home = ({ metals }) => {
                     <h2 className="app-description mb-4 mt-5">
                         Jewel Time: The Digital Field Notebook for Metalsmiths
                     </h2>
-                    <p className="custom-mt">
-                        Welcome to Jewel Time. Here, jewelers and metalsmiths find a quiet corner to document each piece they create, tracing every project from its initial spark to its final polish.
+                    <p className="custom-mt greeting bold-text">
+                        Welcome to Jewel Time
                     </p>
-                    <p>
-                        Whether you're a seasoned artisan or budding enthusiast, Jeweltime serves as your trusted repository through every creation phase.
+                    <p className="regular-text">
+                        Here, jewelers and metalsmiths find a quiet corner to document each piece they create, tracing every project from its initial spark to its final polish.
                     </p>
+                    <p className="regular-text">
+                        Whether you're a seasoned artisan or budding enthusiast, Jewel Time serves as your trusted repository through every creation phase.
+                    </p>
+                    <p className="bold-text">Craft, Chronicle, Cherish with Jewel Time.</p>
                 </Col>
             </Row>
             {/* Row 3 */}
@@ -33,7 +37,7 @@ const Home = ({ metals }) => {
                     <h3 className="feature-heading mb-4">
                         Stay Organized, Boost Creativity
                     </h3>
-                    <p className="feature-text">
+                    <p className="feature-text regular-text">
                         Never lose track of your projects. Our app helps you document every step while inspiring fresh ideas. 
                     </p>
                 </Col>
@@ -50,7 +54,7 @@ const Home = ({ metals }) => {
                     <h3 className="feature-heading mb-4">
                         Market Insights
                     </h3>
-                    <p className="feature-text">
+                    <p className="feature-text regular-text">
                         Stay connected with real-time prices for Gold, Silver, Platinum, and Palladium
                     </p>
                 </Col>

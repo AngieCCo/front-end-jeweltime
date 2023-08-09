@@ -13,6 +13,10 @@ p {
     font-size: 60px;
 }
 
+.bold-text {
+    font-weight: 800;
+}
+
 .home-section .custom-mb {
     margin-bottom: 100px; 
 }
@@ -29,8 +33,16 @@ p {
     font-size: 20px;
 }
 
+.greeting {
+    font-size: 35px;
+}
+
 .image-container {
     border-radius: 20px; 
     height: auto;
     max-width: 100%;
+}
+
+.regular-text {
+    font-weight: 500;
 }
