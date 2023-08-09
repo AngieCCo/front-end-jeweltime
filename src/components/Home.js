@@ -2,6 +2,9 @@ import React from "react";
 import { Container, Row, Col } from 'react-bootstrap'; 
 import './Home.css'; 
 
+import jewelryBenchImg from '../assets/JewelryBench.jpg';
+import ringImg from '../assets/SapphireRing.jpg'
+
 const Home = ({ metals }) => {
 
     if (!metals) {
@@ -9,16 +12,7 @@ const Home = ({ metals }) => {
     }
 
     return (
-        <Container>
-            {/* Row 1 */}
-            <Row className="mt-6 mb-6">
-                <Col xs={2}>Column 1: Logo</Col>
-                <Col xs={2}>Column 2: Home</Col>
-                <Col xs={2}>Column 3: Create a Project</Col>
-                <Col xs={2}>Column 4: My Projects</Col>
-                <Col xs={2}>Column 5: Sign Up</Col>
-                <Col xs={2}>Column 6: Sign In</Col>
-            </Row>
+        <Container className="home-container">
             {/* Row 2 */}
             <Row className="mt-5 mb-5">
                 <Col xs={12}>
@@ -33,18 +27,22 @@ const Home = ({ metals }) => {
             </Row>
             {/* Row 3 */}
             <Row className="mt-5 mb-5">
-                <Col xs={12} md={6}>
+                <Col xs={12} md={5}>
                     <h3>Stay Organized, Boost Creativity</h3>
                     <p>
                         Never lose track of your projects. Our app helps you document every step while inspiring fresh ideas. 
                     </p>
                 </Col>
-                <Col xs={12} md={6}>Photo on the right (3 columns)</Col>
+                <Col xs={12} md={7}>
+                    <img className='image-container' src={jewelryBenchImg} alt="Jewelry bench with tools" />
+                </Col>
             </Row>
             {/* Row 4 */}
             <Row className="mt-5 mb-5"> 
-                <Col xs={12} md={6}>Photo on the left (3 columns)</Col>
-                <Col xs={12} md={6}>
+                <Col xs={12} md={7}>
+                    <img className='image-container' src={ringImg} alt="Silver sapphire ring" />
+                </Col>
+                <Col xs={12} md={5}>
                     <h3>Market Insights</h3>
                     <p>
                         Stay connected with real-time prices for Gold, Silver, Platinum, and Palladium
