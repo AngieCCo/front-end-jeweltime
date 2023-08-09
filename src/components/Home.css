@@ -1,11 +1,5 @@
 .image-container {
+    border-radius: 20px; 
     height: auto;
     max-width: 100%;
-    border-radius: 20px; 
 }
-
-.home-container {
-    /* background-color: #EAC696; */
-    /* background: linear-gradient(45deg,#E6CCB2 0%,#7F5539 100%); */
-}
-

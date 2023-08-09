@@ -12,7 +12,7 @@ const Home = ({ metals }) => {
     }
 
     return (
-        <Container className="home-container">
+        <Container>
             {/* Row 2 */}
             <Row className="mt-5 mb-5">
                 <Col xs={12}>
@@ -26,7 +26,7 @@ const Home = ({ metals }) => {
                 </Col>
             </Row>
             {/* Row 3 */}
-            <Row className="mt-5 mb-5">
+            <Row className="mt-5 mb-5 align-items-center">
                 <Col xs={12} md={5}>
                     <h3>Stay Organized, Boost Creativity</h3>
                     <p>
@@ -38,7 +38,7 @@ const Home = ({ metals }) => {
                 </Col>
             </Row>
             {/* Row 4 */}
-            <Row className="mt-5 mb-5"> 
+            <Row className="mt-5 mb-5 align-items-center"> 
                 <Col xs={12} md={7}>
                     <img className='image-container' src={ringImg} alt="Silver sapphire ring" />
                 </Col>
