@@ -35,8 +35,8 @@ const Project = ({ project, setSelectedProject, deleteProject }) => {
                     <p>Shape: {project.shape}</p>
                     <p>Jewelry type: {project.jewelryType}</p>
                     <p>Notes: {project.notes}</p>
-                <li><button onClick={toggleUpdate}>Update</button></li>
-                <li><button onClick={toggleDelete}>Delete</button></li>
+                <li><button onClick={toggleUpdate} className="btn btn-success w-45 mt-2">Update</button></li>
+                <li><button onClick={toggleDelete} className="btn btn-success w-47 mt-2">Delete</button></li>
             </ul>
         </section>
     )
