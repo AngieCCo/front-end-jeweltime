@@ -12,13 +12,15 @@ const Home = ({ metals }) => {
     }
 
     return (
-        <Container>
+        <Container className="home-section">
             {/* Row 2 */}
-            <Row className="mt-5 mb-5">
+            <Row className="mt-5 mb-6 custom-mb">
                 <Col xs={12}>
-                    <h2>Jeweltime: The Digital Field Notebook for Metalsmiths</h2>
-                    <p>
-                        Welcome to Jeweltime. Here, jewelers and metalsmiths find a quiet corner to document each piece they create, tracing every project from its initial spark to its final polish.
+                    <h2 className="app-description mb-4 mt-5">
+                        Jewel Time: The Digital Field Notebook for Metalsmiths
+                    </h2>
+                    <p className="custom-mt">
+                        Welcome to Jewel Time. Here, jewelers and metalsmiths find a quiet corner to document each piece they create, tracing every project from its initial spark to its final polish.
                     </p>
                     <p>
                         Whether you're a seasoned artisan or budding enthusiast, Jeweltime serves as your trusted repository through every creation phase.
@@ -28,8 +30,10 @@ const Home = ({ metals }) => {
             {/* Row 3 */}
             <Row className="mt-5 mb-5 align-items-center">
                 <Col xs={12} md={5}>
-                    <h3>Stay Organized, Boost Creativity</h3>
-                    <p>
+                    <h3 className="feature-heading mb-4">
+                        Stay Organized, Boost Creativity
+                    </h3>
+                    <p className="feature-text">
                         Never lose track of your projects. Our app helps you document every step while inspiring fresh ideas. 
                     </p>
                 </Col>
@@ -43,8 +47,10 @@ const Home = ({ metals }) => {
                     <img className='image-container' src={ringImg} alt="Silver sapphire ring" />
                 </Col>
                 <Col xs={12} md={5}>
-                    <h3>Market Insights</h3>
-                    <p>
+                    <h3 className="feature-heading mb-4">
+                        Market Insights
+                    </h3>
+                    <p className="feature-text">
                         Stay connected with real-time prices for Gold, Silver, Platinum, and Palladium
                     </p>
                 </Col>
