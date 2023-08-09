@@ -15,10 +15,6 @@ h2 {
   font-family: 'Wix Madefor Display', sans-serif;
 }
 
-html {
-  background-color: #EAC696;
-}
-
 html, body {
   /* background-color: #EAC696; */
   margin: 0;
@@ -31,4 +27,5 @@ p {
 
 #root {
   background: linear-gradient(45deg, #F5E3CC 0%, #7F5539 100%);
+  min-height: 100vh;
 }
