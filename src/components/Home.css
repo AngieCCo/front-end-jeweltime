@@ -19,6 +19,11 @@ p {
     font-weight: 800;
 }
 
+.card-image {
+    max-height: 170px; 
+    object-fit: cover; 
+}
+
 .home-section .custom-mb {
     margin-bottom: 100px; 
 }
@@ -43,6 +48,15 @@ p {
     border-radius: 20px; 
     height: auto;
     max-width: 100%;
+}
+
+.metal-card {
+    margin: 1rem; 
+}
+
+.metal-cards-title {
+    color: #7A3E3E;
+    font-size: 35px;
 }
 
 .regular-text {
