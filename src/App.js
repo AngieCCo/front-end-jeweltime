@@ -266,9 +266,7 @@ function App() {
 
 
   return (
-      
       <div className="App">
-        <h1>Jeweltime</h1>
           <div className='content'>
             <nav className='NavBar'>
               <NavBar />
