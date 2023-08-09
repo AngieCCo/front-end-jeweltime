@@ -299,7 +299,10 @@ function App() {
             </Routes> 
           </div>
             <div className='w-100' style={ { maxWidth: '400px' }}>
-              <AuthDetails />
+              <AuthDetails 
+                setDisplayedProjects={setDisplayedProjects}
+                setSelectedAccount={setSelectedAccount}
+              />
             </div>
       </div>
   );

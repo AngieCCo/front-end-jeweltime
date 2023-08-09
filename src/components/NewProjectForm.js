@@ -50,15 +50,13 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
             console.log("Creating new project...");
             createNewProject(projectFormData);
             alert("New Project Created! ✅")
-            //setProjectFormData(INITIAL_FORM_DATA)
-
+            setProjectFormData(INITIAL_FORM_DATA)
         } else {
             console.log("Updating project...");
             updateProject(projectFormData);
             alert("Project Updated! ✅")
-            //setProjectFormData(INITIAL_FORM_DATA)
+            setProjectFormData(INITIAL_FORM_DATA)
         }
-        
     };
 
     return (
