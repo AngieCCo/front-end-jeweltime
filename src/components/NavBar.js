@@ -6,7 +6,7 @@ import './NavBar.css'
 function NavBar() {
     return (
         <>
-            <Navbar className="navbar-light">
+            <Navbar className="navbar">
                 <Container>
                     <div>
                         <Navbar.Brand href="#home" className="mb-0 h1">Jeweltime 💎</Navbar.Brand>

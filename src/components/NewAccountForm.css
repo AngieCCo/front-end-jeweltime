@@ -1,5 +1,5 @@
 .wrapper {
-    height: 70vh;
+    height: 80vh;
 }
 
 /* .bg-custom {
@@ -12,7 +12,7 @@
     height: min-content;
     border-radius: 10px;
     color: black;
-    background-color: rgb(248, 240, 229);
+    background-color: rgb(243, 222, 186);
 }
 
 .btn-success {

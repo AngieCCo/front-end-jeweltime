@@ -68,6 +68,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
             <form className="form__container" onSubmit={handleSubmit}>
                 {/* <label htmlFor="id" id='projectId'>Project id: {projectFormData.projectId}</label> */}
                 <div className='form-group'>
+                    <br/>
                     <label htmlFor="projectName" className="form-label">Project Name</label>
                     <textarea className="form-control"
                     type="text"
@@ -80,6 +81,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     ></textarea>
                 </div>
                 <div>
+                    <br/>
                     <label htmlFor="description" className="form-label">Project's description</label>
                     <textarea className="form-control"
                     type="text"
@@ -92,6 +94,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     ></textarea>
                 </div>
                 <div>
+                    <br/>
                     <label htmlFor="startedAt" className="form-label">Started date</label>
                     <textarea className="form-control"
                     type="text"
@@ -104,6 +107,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     ></textarea>
                 </div>
                 <div>
+                    <br/>
                     <label htmlFor="completedAt" className="form-label">Project completed date</label>
                     <textarea className="form-control"
                     type="text"
@@ -115,6 +119,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     ></textarea>
                 </div>
                 <div>
+                    <br/>
                     <label htmlFor="hoursSpent" className="form-label">Hours spent</label>
                     <textarea className="form-control"
                     type="text"
@@ -127,6 +132,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     ></textarea>
                 </div>
                 <div>
+                    <br/>
                     <label htmlFor="completedAt" className="form-label">Materials' costs</label>
                     <textarea className="form-control"
                     type="text"
@@ -139,6 +145,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     ></textarea>
                 </div>
                 <div>
+                <br/>
                     <label htmlFor="materials" className="form-label">Materials list</label>
                     <textarea className="form-control"
                     type="text"
@@ -151,6 +158,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     ></textarea>
                 </div>
                 <div>
+                    <br/>
                     <label htmlFor="metals" className="form-label">Metals</label>
                     <textarea className="form-control"
                     type="text"
@@ -175,6 +183,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     ></textarea>
                 </div>
                 <div>
+                    <br/>
                     <label htmlFor="shape" className="form-label">Shape</label>
                     <textarea className="form-control"
                     type="text"
@@ -187,6 +196,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     ></textarea>
                 </div>
                 <div>
+                    <br/>
                     <label htmlFor="jewelryType" className="form-label">Jewelry Type</label>
                     <textarea className="form-control"
                     type="text"
@@ -199,6 +209,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     ></textarea>
                 </div>
                 <div>
+                    <br/>
                     <label htmlFor="notes" className="form-label">Notes</label>
                     <textarea className="form-control"
                     type="text"
@@ -209,7 +220,10 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     placeholder="Notes"
                     ></textarea>
                 </div>
-            <button type="submit" className="btn btn-success w-100 mt-2">Create/Update</button>
+                <div>
+                <br/>
+                <button type="submit" className="btn btn-success w-100 mt-2">Create/Update</button>
+                </div>
             </form>
         </div>
     </div>

@@ -1,4 +1,5 @@
-.navbar-light {
+.navbar {
     background-color: rgb(231, 177, 10) !important;
     font-size: 20px !important;
+    margin-bottom: 50px;
 }
