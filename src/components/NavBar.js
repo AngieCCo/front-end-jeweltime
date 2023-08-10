@@ -9,8 +9,8 @@ function NavBar() {
             <Navbar className="navbar">
                 <Container>
                     <div>
-                        <Navbar.Brand href="#home" className="mb-0 h1">Jeweltime</Navbar.Brand>
-                        <img src="/JewelTimeLogo.png" width="130" height="130" alt=""></img>
+                        <Navbar.Brand href="#home" className="mb-0 h1">Jewel Time</Navbar.Brand>
+                        <img src="/JewelTimeLogo.png" width="150" height="150" alt=""></img>
                     </div>
                         <div>
                             <Link to={`Home`} className="nav-link">Home</Link>
