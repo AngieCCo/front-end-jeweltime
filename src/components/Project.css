@@ -2,3 +2,23 @@
     background-color: #7C9D96 !important;
     border-color: #4C4B16 !important;
 }
+
+.project {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.project-label {
+    font-weight: 600; 
+}
+
+.project-name {
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.projects ul {
+    list-style-type: none;
+    /* padding: 0; */
+}
