@@ -4,18 +4,13 @@ h3 {
     font-family: 'Wix Madefor Display', sans-serif;
 }
 
-p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 25px;
-    font-weight: 800;
-}
-
 .app-description {
     color: #EEE0C9;
     font-size: 60px;
 }
 
 .bold-text {
+    font-size: 25px;
     font-weight: 800;
 }
 
@@ -60,5 +55,7 @@ p {
 }
 
 .regular-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
     font-weight: 500;
 }
