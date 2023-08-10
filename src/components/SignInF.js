@@ -24,9 +24,9 @@ const SignInF = ({ validateUser }) => {
             <Card style={{ width: '30rem', margin: 'auto' }} >
             <div className="signIn-form">
             <Card.Body>
-                    <Card.Title>Sign In</Card.Title>
+                    <Card.Title class="text-center fw-bold">Sign In</Card.Title>
                     <form onSubmit={signIn}>
-                    {/* <h1>Sign In</h1> */}
+                        <br/>
                         <label htmlFor="email">Email</label>
                             <input
                                 type="email"
@@ -38,6 +38,7 @@ const SignInF = ({ validateUser }) => {
                                 required
                                 className="form-control"
                             ></input>
+                            <br/>
                         <label htmlFor="password">Password</label>
                         <div style={{ display: 'flex', alignItems: 'center' }}>
                             <input
@@ -57,8 +58,12 @@ const SignInF = ({ validateUser }) => {
                                 >
                                     {showPassword ? '🙈' : '👁'} 
                                 </span>
-                        </div>  
+                        </div>
+                    <div>
+                    <br/>
                     <button type="submit" className="btn btn-success w-100 mt-2">Sign In</button>
+                    </div>
+                    
                 </form>
                 </Card.Body>
             </div>
