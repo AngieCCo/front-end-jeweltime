@@ -77,10 +77,6 @@ const Home = ({ metals }) => {
             </Row>
             {/* Row 5 */}
             <Row className="mt-5 mb-5">
-                <Col xs={1}>For Signed in as... and Sign Out button</Col>
-            </Row>
-            {/* Row 6 */}
-            <Row className="mt-5 mb-5">
                 <Col xs={12} className="d-flex justify-content-center mb-4">
                     <h2 className="metal-cards-title">
                         Precious Metal Prices
@@ -99,12 +95,6 @@ const Home = ({ metals }) => {
                         </Col>
                     ))}
                 </Col>
-            </Row>
-            {/* Row 7 */}
-            <Row className="mt-5 mb-5">
-                <Col xs={1}></Col>
-                <Col xs={10}>Crafted with precision by Angie & Lyuda</Col>
-                <Col xs={1}></Col>
             </Row>
         </Container>
     );
