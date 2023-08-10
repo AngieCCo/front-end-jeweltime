@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 // Components from video
 import SignInF from './components/SignInF';
 import AuthDetails from './components/AuthDetails';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from '../src/firebase'
 
 import './App.css';
@@ -97,29 +97,46 @@ function App() {
     });
   }
 
+  const login = (firebaseUserCredential) => {
+
+    // Signed in 
+    const user = firebaseUserCredential;
+    console.log("firebaseUserCredential:", user)
+    let userFirebaseId = user.uid
+    console.log("user id!:", userFirebaseId)
+
+    const userId = {"firebaseId": userFirebaseId};
+
+    if (userFirebaseId !== undefined && userFirebaseId !== '') {
+      axios
+        .post(`${BACKEND_URL}/signin`, userId)
+        .then( (response) => {
+          console.log("response data!", response.data)
+          setSelectedAccount(response.data)
+          console.log('Sign in account success', response.data);
+        })
+    }
+  }
+
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+        if (user) {
+            login(user)
+        }
+    });
+
+    return () => {
+        listen();
+    }
+}, [])
+
   // Route to validate sign in!!!
   const validateUser = (email, password) => {
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           console.log("INSIDE VALIDATE USER")
-          // Signed in 
-          const user = userCredential.user;
-          console.log("userCredential:", user)
-          let userFirebaseId = user.uid
-          console.log("user id!:", userFirebaseId)
-
-          const userId = {"firebaseId": userFirebaseId};
-
-          if (userFirebaseId !== undefined && userFirebaseId !== '') {
-            axios
-              .post(`${BACKEND_URL}/signin`, userId)
-              .then( (response) => {
-                console.log("response data!", response.data)
-                setSelectedAccount(response.data)
-                console.log('Sign in account success', response.data);
-              })
-          }
+          login(userCredential.user)
         })
       .catch( (error) => {
         console.log('error', error)

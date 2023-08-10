@@ -62,7 +62,6 @@ const SignInF = ({ validateUser }) => {
                     <br/>
                     <button type="submit" className="btn btn-success w-100 mt-2">Sign In</button>
                     </div>
-                    
                 </form>
                 </Card.Body>
             </div>
