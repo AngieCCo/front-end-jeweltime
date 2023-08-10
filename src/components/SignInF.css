@@ -6,3 +6,9 @@
     background-color: #7C9D96 !important;
     border-color: #4C4B16 !important;
 }
+
+.text-size {
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+}
