@@ -101,7 +101,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
                         </div>
                         <div>
                             <br/>
-                            <label htmlFor="lastName" className="form-label">last Name</label>
+                            <label htmlFor="lastName" className="form-label">Last Name</label>
                             <textarea className="form-control"
                             type="text"
                             id="lastName"
