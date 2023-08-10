@@ -3,7 +3,7 @@ import './Footer.css'
 
 const Footer = () => {
     return (
-        <footer className="footer">
+        <footer className="footer--pin">
             <p>Crafted with precision by Angie & Lyuda</p>
         </footer>
     );
