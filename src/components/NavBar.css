@@ -1,10 +1,14 @@
 .navbar {
-    /* background-color: #7C9D96 !important; */
     background: linear-gradient(to bottom, rgb(197, 209, 135), rgb(172, 185, 118), rgb(147, 161, 101), rgb(122, 137, 84), rgb(97, 113, 67));
-    font-size: 20px !important;
+    font-size: 21px !important;
+    font-family: 'Montserrat', sans-serif;
     margin-bottom: 50px;
 }
 
 .nav-link {
     color: #EEE0C9 !important;
+}
+
+.nav-link:hover {
+    color: rgb(57, 81, 68) !important; /*will change text-color of element on hover */
 }
