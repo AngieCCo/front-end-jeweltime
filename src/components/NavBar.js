@@ -9,23 +9,23 @@ function NavBar() {
             <Navbar className="navbar">
                 <Container>
                     <div>
-                        <Navbar.Brand href="#home" className="mb-0 h1">Jeweltime 💎</Navbar.Brand>
-                        {/* <img src="/docs/4.4/assets/brand/bootstrap-solid.svg" width="30" height="30" alt=""></img> */}
+                        <Navbar.Brand href="#home" className="mb-0 h1">Jeweltime</Navbar.Brand>
+                        <img src="/JewelTimeLogo.png" width="130" height="130" alt=""></img>
                     </div>
-                        <div className="home">
-                            <Link to={`Home`}>Home</Link>
+                        <div>
+                            <Link to={`Home`} className="nav-link">Home</Link>
                         </div>
-                        <div className="newproject">
-                            <Link to={`newproject`}>Create a Project</Link>
+                        <div>
+                            <Link to={`newproject`} className="nav-link">Create a Project</Link>
                         </div>
-                        <div className="userProjects">
-                            <Link to={`userprojects`}>My Projects</Link>
+                        <div>
+                            <Link to={`userprojects`} className="nav-link">My Projects</Link>
                         </div>
-                        <div className="signup">
-                            <Link to={`signup`}>Sign Up</Link>
+                        <div>
+                            <Link to={`signup`} className="nav-link">Sign Up</Link>
                         </div>
-                        <div className="signIn">
-                            <Link to={`signin`}>Sign In</Link>
+                        <div className="nav-link">
+                            <Link to={`signin`} className="nav-link">Sign In</Link>
                         </div>
                 </Container>
             </Navbar>
