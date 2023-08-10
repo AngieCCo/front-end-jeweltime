@@ -19,6 +19,8 @@ const INITIAL_FORM_DATA = {
 
 const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) => {
 
+    // const [startDate, setStartDate] = useState(new Date())
+
     // Set initial values of project BEFORE setting the variable state
     // If done before avoids re-rendering (looping)
     let currentProject = INITIAL_FORM_DATA
@@ -69,7 +71,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     <br/>
                     <label htmlFor="projectName" className="form-label">Project Name</label>
                     <textarea className="form-control"
-                    type="text"
+                    type="date"
                     id="projectName"
                     name="projectName"
                     value={projectFormData.projectName}
@@ -93,28 +95,28 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                 </div>
                 <div>
                     <br/>
-                    <label htmlFor="startedAt" className="form-label">Started date</label>
-                    <textarea className="form-control"
-                    type="text"
-                    id="startedAt"
+                    <label htmlFor="startedAt" className="form-label">Start date</label>
+                    <input className="form-control"
+                    type="date"
+                    id="dateStartedAt"
                     name="startedAt"
                     value={projectFormData.startedAt}
                     onChange={anInputChanged}
                     placeholder="Enter project's starting date"
                     required
-                    ></textarea>
+                    ></input>
                 </div>
                 <div>
                     <br/>
-                    <label htmlFor="completedAt" className="form-label">Project completed date</label>
-                    <textarea className="form-control"
-                    type="text"
+                    <label htmlFor="completedAt" className="form-label">Completion date</label>
+                    <input className="form-control"
+                    type="date"
                     id="completedAt"
                     name="completedAt"
                     value={projectFormData.completedAt}
                     onChange={anInputChanged}
                     placeholder="Enter finish date"
-                    ></textarea>
+                    ></input>
                 </div>
                 <div>
                     <br/>
