@@ -1,5 +1,9 @@
 .footer  {
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
+    right: 0;
     text-align: center;
     background-color: rgba(194, 239, 194, 0.503);
     color: rgb(67, 67, 67);
-    }
+}
