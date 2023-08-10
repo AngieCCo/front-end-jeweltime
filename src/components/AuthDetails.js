@@ -1,6 +1,7 @@
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './AuthDetails.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const auth = getAuth();
@@ -64,7 +65,7 @@ const AuthDetails = ( { setDisplayedProjects, setSelectedAccount }) => {
     return (
         <div>
         {authUser ? <><p>{`Signed In as ${authUser.email}`}</p>
-        <button onClick={userSignOut}>Sign Out</button></> : <p>Signed Out</p>}
+        <button onClick={userSignOut} className="btn btn-success w-95 mt-2">Sign Out</button></> : <p>Signed Out</p>}
         </div>
     )
 }
