@@ -7,10 +7,10 @@ import NavBar from './components/NavBar';
 import NewAccountForm from './components/NewAccountForm';
 import NewProjectForm from './components/NewProjectForm';
 import ProjectsList from './components/ProjectsList';
+import Footer from './components/Footer';
 // Components from video
 import SignInF from './components/SignInF';
 import AuthDetails from './components/AuthDetails';
-
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../src/firebase'
 
@@ -303,6 +303,9 @@ function App() {
                 setDisplayedProjects={setDisplayedProjects}
                 setSelectedAccount={setSelectedAccount}
               />
+            </div>
+            <div>
+              <Footer/>
             </div>
       </div>
   );
