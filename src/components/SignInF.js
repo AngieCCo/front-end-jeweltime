@@ -23,7 +23,7 @@ const SignInF = ({ validateUser }) => {
             <Card style={{ width: '30rem', margin: 'auto' }} >
             <div className="signIn-form">
             <Card.Body>
-                    <Card.Title class="text-center fw-bold">Sign In</Card.Title>
+                    <Card.Title className="text-center fw-bold text-size">Sign In</Card.Title>
                     <form onSubmit={signIn}>
                         <br/>
                         <label htmlFor="email">Email</label>
