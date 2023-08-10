@@ -23,18 +23,18 @@ const Project = ({ project, setSelectedProject, deleteProject }) => {
         <section className="projects">
             <h1>{project.projectName}</h1>
             <ul>
-                    <label>{project.id}</label>
-                    <p>Project description: {project.description}</p>
-                    <p>Starting date: {project.startedAt}</p>
-                    <p>Completed at: {project.completedAt}</p>
-                    <p>Hours spent: {project.hoursSpent}</p>
-                    <p>Materials cost: {project.materialsCost}</p>
-                    <p>Materials: {project.materials}</p>
-                    <p>Metals: {project.metals}</p>
-                    <p>Gemstones: {project.gemstones}</p>
-                    <p>Shape: {project.shape}</p>
-                    <p>Jewelry type: {project.jewelryType}</p>
-                    <p>Notes: {project.notes}</p>
+                    {/* <label>{project.id}</label> */}
+                    <p className="fw-bold">Project description: {project.description}</p>
+                    <p className="fw-bold">Starting date: {project.startedAt}</p>
+                    <p className="fw-bold">Completed at: {project.completedAt}</p>
+                    <p className="fw-bold">Hours spent: {project.hoursSpent}</p>
+                    <p className="fw-bold">Materials cost: {project.materialsCost}</p>
+                    <p className="fw-bold">Materials: {project.materials}</p>
+                    <p className="fw-bold">Metals: {project.metals}</p>
+                    <p className="fw-bold">Gemstones: {project.gemstones}</p>
+                    <p className="fw-bold">Shape: {project.shape}</p>
+                    <p className="fw-bold">Jewelry type: {project.jewelryType}</p>
+                    <p className="fw-bold">Notes: {project.notes}</p>
                 <li><button onClick={toggleUpdate} className="btn btn-success w-45 mt-2">Update</button></li>
                 <li><button onClick={toggleDelete} className="btn btn-success w-47 mt-2">Delete</button></li>
             </ul>

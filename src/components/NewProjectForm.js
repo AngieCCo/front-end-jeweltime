@@ -126,7 +126,6 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     value={projectFormData.hoursSpent}
                     onChange={anInputChanged}
                     placeholder="Enter total spent hours"
-                    required
                     ></textarea>
                 </div>
                 <div>
@@ -139,7 +138,6 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     value={projectFormData.materialsCost}
                     onChange={anInputChanged}
                     placeholder="Enter cost of materials"
-                    required
                     ></textarea>
                 </div>
                 <div>
@@ -165,7 +163,6 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     value={projectFormData.metals}
                     onChange={anInputChanged}
                     placeholder="Enter list of metals"
-                    required
                     ></textarea>
                 </div>
                 <div>
@@ -177,7 +174,6 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     value={projectFormData.gemstones}
                     onChange={anInputChanged}
                     placeholder="Enter list of gemstones"
-                    required
                     ></textarea>
                 </div>
                 <div>
@@ -190,7 +186,6 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     value={projectFormData.shape}
                     onChange={anInputChanged}
                     placeholder="Enter jewel shape"
-                    required
                     ></textarea>
                 </div>
                 <div>
@@ -203,7 +198,6 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     value={projectFormData.jewelryType}
                     onChange={anInputChanged}
                     placeholder="Enter jewelry type"
-                    required
                     ></textarea>
                 </div>
                 <div>
