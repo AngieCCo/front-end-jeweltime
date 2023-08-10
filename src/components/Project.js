@@ -28,7 +28,7 @@ const Project = ({ project, setSelectedProject, deleteProject }) => {
                     <p className='project'><span className="project-label">Start date:</span> {project.startedAt}</p>
                     <p className="project"><span className="project-label">Completion date: </span> {project.completedAt}</p>
                     <p className="project"><span className="project-label">Hours spent:</span> {project.hoursSpent}</p>
-                    <p className="project"><span className="project-label">Materials cost:</span> {project.materialsCost}</p>
+                    <p className="project"><span className="project-label">Materials cost:</span> ${project.materialsCost}</p>
                     <p className="project"><span className="project-label">Materials:</span> {project.materials}</p>
                     <p className="project"><span className="project-label">Metals:</span> {project.metals}</p>
                     <p className="project"><span className="project-label">Gemstones:</span> {project.gemstones}</p>
