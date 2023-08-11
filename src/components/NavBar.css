@@ -10,5 +10,5 @@
 }
 
 .nav-link:hover {
-    color: rgb(57, 81, 68) !important; /*will change text-color of element on hover */
+    color: whitesmoke !important; /*will change text-color of element on hover */
 }
