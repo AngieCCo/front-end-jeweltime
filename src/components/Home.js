@@ -103,7 +103,7 @@ const Home = ({ metals }) => {
                         </h2>
                     </Col>
                 </Row>
-            )};
+            )}
         </Container>
     );
 };
