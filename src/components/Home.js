@@ -7,7 +7,7 @@ import ringImg from '../assets/SapphireRing.jpg'
 
 import goldImg from '../assets/metalsGold.jpg';
 import silverImg from '../assets/metalsSilver.jpg';
-import platinumImg from '../assets/metalsPlatinum.png';
+import platinumImg from '../assets/metalsPlatinum.jpg';
 import palladiumImg from '../assets/metalsPalladium.png';
 
 const metalImages = {
