@@ -49,7 +49,7 @@ const Home = ({ metals }) => {
             </Row>
             {/* Row 3 */}
             <Row className="mt-5 mb-5 align-items-center">
-                <Col xs={12} md={5}>
+                <Col xs={12} md={6}>
                     <h3 className="feature-heading mb-4">
                         Stay Organized, Boost Creativity
                     </h3>
@@ -57,16 +57,16 @@ const Home = ({ metals }) => {
                         Never lose track of your projects. Our app helps you document every step while inspiring fresh ideas. 
                     </p>
                 </Col>
-                <Col xs={12} md={7}>
+                <Col xs={12} md={6}>
                     <img className='image-container' src={jewelryBenchImg} alt="Jewelry bench with tools" />
                 </Col>
             </Row>
             {/* Row 4 */}
             <Row className="mt-5 mb-5 align-items-center"> 
-                <Col xs={12} md={7}>
+                <Col xs={12} md={6}>
                     <img className='image-container' src={ringImg} alt="Silver sapphire ring" />
                 </Col>
-                <Col xs={12} md={5}>
+                <Col xs={12} md={6}>
                     <h3 className="feature-heading mb-4">
                         Market Insights
                     </h3>
