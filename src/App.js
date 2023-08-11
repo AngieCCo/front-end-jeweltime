@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { Route, Routes, Redirect } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
@@ -278,7 +278,6 @@ function App() {
       })
   }, [])
 
-
   return (
       <div className="App">
           <div className='content'>
@@ -287,7 +286,7 @@ function App() {
             </nav>
             <Routes>
               <Route exact path="/home" element={<Home
-              metals={metals} />}/>
+                metals={metals} />}/>
               <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
                 createNewAccount={createNewAccount}
@@ -308,7 +307,7 @@ function App() {
                 setSelectedProject={setSelectedProject}
                 deleteProject={deleteProject}
               />} />
-            </Routes> 
+            </Routes>
           </div>
             <div className='w-100' style={ { maxWidth: '400px' }}>
               <AuthDetails 
