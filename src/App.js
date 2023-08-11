@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
@@ -153,11 +153,6 @@ function App() {
       axios
       .post(`${BACKEND_URL}/projects`, newProject)
       .then( (response) => {
-
-        // This is the new code addition
-        // Here we are cloning displayedprojects and adding the new project
-        // Then resetting the new array to displayedProjects
-
         // Before I was overwriting displayedProjects with an Object (new single project)
         // Hence the map function couldn't iterate and it was throwing an error
         const projectsToRender = displayedProjects.map( project => {
@@ -291,7 +286,7 @@ function App() {
               <NavBar />
             </nav>
             <Routes>
-              <Route path="home" element={<Home
+              <Route exact path="/home" element={<Home
               metals={metals} />}/>
               <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
