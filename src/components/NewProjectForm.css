@@ -6,11 +6,13 @@
 }
 
 .newProjectForm {
-    padding: 20px;
+    padding: 40px;
     height: min-content;
     border-radius: 10px;
     color: black;
     background-color: rgb(243, 222, 186);
+    margin-left: 30vh;
+    margin-right: 30vh;
 }
 
 .btn-success {

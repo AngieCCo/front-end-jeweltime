@@ -19,8 +19,6 @@ const INITIAL_FORM_DATA = {
 
 const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) => {
 
-    // const [startDate, setStartDate] = useState(new Date())
-
     // Set initial values of project BEFORE setting the variable state
     // If done before avoids re-rendering (looping)
     let currentProject = INITIAL_FORM_DATA
@@ -62,11 +60,10 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
     };
 
     return (
-    <div className="d-grid gap-3 w-100">
+    <div className="d-grid gap-3 w-80">
         <div className='newProjectForm'>
             <h2 className="newProject">Create a Project</h2>
             <form className="form__container" onSubmit={handleSubmit}>
-                {/* <label htmlFor="id" id='projectId'>Project id: {projectFormData.projectId}</label> */}
                 <div className='form-group'>
                     <br/>
                     <label htmlFor="projectName" className="form-label">Project Name</label>
