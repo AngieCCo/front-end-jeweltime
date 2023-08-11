@@ -43,8 +43,10 @@ const Project = ({ project, setSelectedProject, deleteProject }) => {
                                 <p className="project"><span className="project-label">Notes:</span> {project.notes}</p>
                             </ul>
                             <Card.Footer>
-                                <button onClick={toggleUpdate} className="btn btn-success w-45 mt-2">Update</button>
-                                <button onClick={toggleDelete} className="btn btn-success w-47 mt-2">Delete</button>
+                                <div>
+                                <button onClick={toggleUpdate} className="btn btn-success w-45 mr-1 content-center">Update</button>{' '}
+                                <button onClick={toggleDelete} className="btn btn-success w-47 mr-1">Delete</button>
+                                </div>
                             </Card.Footer>
                         </Card.Text>
                     </Card.Body>

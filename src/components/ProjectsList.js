@@ -13,20 +13,21 @@ const ProjectsList = ({ displayedProjects, setSelectedProject, deleteProject }) 
             return displayedProjects.map((project) => {
                 return (
                     <Carousel.Item>
-                        <Project key={project.projectId}
-                            project={project}
-                            setSelectedProject={setSelectedProject}
-                            deleteProject={deleteProject}
-                        ></Project>
+                        <div className='d-flex justify-content-center'>
+                            <Project key={project.projectId}
+                                project={project}
+                                setSelectedProject={setSelectedProject}
+                                deleteProject={deleteProject}
+                            ></Project>
+                        </div>
                     </Carousel.Item>
                 );
             });
         };
         return (
-            <Carousel>
+            <Carousel interval={null}>
                 {listOfProjects(displayedProjects)}
                 {/* <ul className="projects__list no-bullet">{listOfProjects(displayedProjects)}</ul> */}
-            
             </Carousel>
             
         ) 
