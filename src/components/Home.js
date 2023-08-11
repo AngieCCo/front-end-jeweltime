@@ -5,7 +5,7 @@ import './Home.css';
 import jewelryBenchImg from '../assets/JewelryBench.jpg';
 import ringImg from '../assets/SapphireRing.jpg'
 
-import goldImg from '../assets/metalsGold.png';
+import goldImg from '../assets/metalsGold.jpg';
 import silverImg from '../assets/metalsSilver.png';
 import platinumImg from '../assets/metalsPlatinum.png';
 import palladiumImg from '../assets/metalsPalladium.png';
