@@ -120,7 +120,6 @@ function App() {
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
-      console.log("Entered onAuthStateChanged")
         if (user) {
             login(user)
         }
@@ -287,6 +286,8 @@ function App() {
             </nav>
             <Routes>
               <Route exact path="/home" element={<Home
+                metals={metals} />}/>
+              <Route exact path="/" element={<Home
                 metals={metals} />}/>
               <Route path="/signup" element={ <NewAccountForm 
                 selectedAccount={selectedAccount}
