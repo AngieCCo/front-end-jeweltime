@@ -120,6 +120,7 @@ function App() {
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
+      console.log("Entered onAuthStateChanged")
         if (user) {
             login(user)
         }
