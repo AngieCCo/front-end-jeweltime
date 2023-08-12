@@ -80,19 +80,17 @@ const Home = ({ metals }) => {
                             Precious Metal Prices
                         </h2>
                     </Col>
-                    <Col xs={12} className="d-flex justify-content-center">
-                        {Object.entries(metals).map(([metalName, metalValue]) => (
-                            <Col xs={12} sm={6} md={4} lg={3} xl={2} key={metalName}>
-                                <Card className="metal-card">
-                                    <Card.Img className="card-image" variant="top" src={metalImages[metalName]} />
-                                    <Card.Body className="d-flex flex-column align-items-center">
-                                        <Card.Title>{capitalizeFirstLetter(metalName)}</Card.Title>
-                                        <Card.Text>${metalValue.toFixed(2)}</Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        ))}
-                    </Col>
+                    {Object.entries(metals).map(([metalName, metalValue]) => (
+                        <Col xs={12} sm={6} md={4} lg={3} xl={2} key={metalName}>
+                            <Card className="metal-card">
+                                <Card.Img className="card-image" variant="top" src={metalImages[metalName]} />
+                                <Card.Body className="d-flex flex-column align-items-center">
+                                    <Card.Title>{capitalizeFirstLetter(metalName)}</Card.Title>
+                                    <Card.Text>${metalValue.toFixed(2)}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
                 </Row>
             ) : (
                 // Display loading message while waiting for API call for metal prices
