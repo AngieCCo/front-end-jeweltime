@@ -1,14 +1,26 @@
-.signIn-form {
-    background-color: rgb(243, 222, 186);
-}
-
 .btn-success {
     background-color: #7C9D96 !important;
     border-color: #4C4B16 !important;
+}
+
+.sign-in-card {
+    width: 30rem;
+    margin: auto;
+    border-radius: 15px; 
+    background-color: rgb(243, 222, 186); 
+    padding: 20px; 
 }
 
 .text-size {
     font-family: 'Wix Madefor Display', sans-serif;
     font-size: 30px;
     font-weight: 800;
+}
+
+.tools-image {
+    border-radius: 15px; 
+    max-width: 50%; 
+    height: auto; 
+    display: block; 
+    margin: 80px auto 50px auto; 
 }
