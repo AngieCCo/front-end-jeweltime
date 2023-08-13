@@ -5,6 +5,10 @@
     margin-bottom: 50px;
 }
 
+.navbar .nav-link {
+    margin: 0 10px;
+}
+
 .nav-link {
     color: #EEE0C9 !important;
 }

@@ -123,7 +123,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     name="hoursSpent"
                     value={projectFormData.hoursSpent}
                     onChange={anInputChanged}
-                    placeholder="Enter total spent hours"
+                    placeholder="Enter total hours"
                     ></textarea>
                 </div>
                 <div>

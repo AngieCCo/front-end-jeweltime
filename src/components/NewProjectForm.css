@@ -1,18 +1,14 @@
 .d-grid {
     border-color: #4C4B16;
     border-radius: 10px;
-    padding-left: 100px;
-    padding-right: 100px;
 }
 
 .newProjectForm {
     padding: 40px;
-    height: min-content;
     border-radius: 10px;
     color: black;
     background-color: rgb(243, 222, 186);
-    margin-left: 30vh;
-    margin-right: 30vh;
+    margin: 10px 245px;
 }
 
 .btn-success {
