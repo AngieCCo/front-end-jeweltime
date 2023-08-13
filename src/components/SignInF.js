@@ -67,7 +67,7 @@ const SignInF = ({ validateUser }) => {
                 </Card.Body>
             </div>
             </Card>
-            <img src={toolsImg} alt="Close up of metalsmithing tools" className="tools-image" />
+            {/* <img src={toolsImg} alt="Close up of metalsmithing tools" className="tools-image" /> */}
         </div>
     )
 }
