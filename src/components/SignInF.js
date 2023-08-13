@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import './SignInF.css' 
+import toolsImg from '../assets/JewelrySix.jpg'; 
 
 const SignInF = ({ validateUser }) => {
     const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ const SignInF = ({ validateUser }) => {
 
     return (
         <div className="sign-in-container">
-            <Card style={{ width: '30rem', margin: 'auto' }} >
+            <Card className="sign-in-card" >
             <div className="signIn-form">
             <Card.Body>
                     <Card.Title className="text-center fw-bold text-size">Sign In</Card.Title>
@@ -66,6 +67,7 @@ const SignInF = ({ validateUser }) => {
                 </Card.Body>
             </div>
             </Card>
+            <img src={toolsImg} alt="Close up of metalsmithing tools" className="tools-image" />
         </div>
     )
 }
