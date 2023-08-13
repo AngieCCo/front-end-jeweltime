@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
@@ -8,12 +8,12 @@ import NewAccountForm from './components/NewAccountForm';
 import NewProjectForm from './components/NewProjectForm';
 import ProjectsList from './components/ProjectsList';
 import Footer from './components/Footer';
+// import siteBackground from '/siteBackground.jpg';
 // Components from video
 import SignInF from './components/SignInF';
 import AuthDetails from './components/AuthDetails';
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from '../src/firebase'
-
 import './App.css';
 
 // const BACKEND_URL = "http://127.0.0.1:5000";
@@ -279,7 +279,7 @@ function App() {
   }, [])
 
   return (
-      <div className="App">
+      <div className="App" style={{ backgroundImage: "url(/siteBackground.jpg)" }}>
           <div className='content'>
             <nav className='NavBar'>
               <NavBar />
