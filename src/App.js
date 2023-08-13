@@ -279,7 +279,7 @@ function App() {
   }, [])
 
   return (
-      <div className="App" style={{ backgroundImage: "url(/siteBackground.jpg)" }}>
+      <div className="App" style={{ backgroundImage: "url(/favorite.jpg)" }}>
           <div className='content'>
             <nav className='NavBar'>
               <NavBar />
