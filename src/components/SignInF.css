@@ -4,7 +4,7 @@
 }
 
 .sign-in-card {
-    width: 30rem;
+    max-width: 30rem;
     margin: auto;
     border-radius: 15px; 
     background-color: rgb(243, 222, 186); 
