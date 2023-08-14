@@ -15,3 +15,13 @@
     background-color: #7C9D96 !important;
     border-color: #4C4B16 !important;
 }
+
+@media (max-width: 768px) {
+    /* Apply specific styles for screens with a maximum width of 768px (tablets and mobile) */
+    .newProjectForm {
+        /* Center the form horizontally */
+        margin: 10px auto; 
+        /* Limit the form width for smaller screens */
+        max-width: 90%; 
+    }
+}
