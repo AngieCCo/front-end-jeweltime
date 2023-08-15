@@ -1,24 +1,20 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import Carousel from 'react-bootstrap/Carousel';
 import './Project.css'
 
 const Project = ({ project, setSelectedProject, deleteProject }) => {
 
     const toggleDelete = () => {
-        console.log('delete button clicked!')
         deleteProject(project.projectId);
         alert("Project Deleted! 🗑️")
     };
 
     let navigate = useNavigate()
     const toggleUpdate = () => {
-        console.log('Update button clicked!')
         setSelectedProject(project)
         let path = '/newproject';
         navigate(path);
-        // alert("Project Updated! ✅")
     };
 
     return (

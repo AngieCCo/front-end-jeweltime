@@ -13,7 +13,6 @@ function NavBar() {
                 </div>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-toggler"/>
                 <Navbar.Collapse id="basic-navbar-nav">
-                    {/* Remove ms-auto class to not have the nav bar links aligned to the right */}
                     <Nav className="ms-auto">
                         <Link to={`Home`} className="nav-link px-4">Home</Link>
                         <Link to={`newproject`} className="nav-link px-4">Create a Project</Link>

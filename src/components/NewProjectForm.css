@@ -17,11 +17,8 @@
 }
 
 @media (max-width: 768px) {
-    /* Apply specific styles for screens with a maximum width of 768px (tablets and mobile) */
     .newProjectForm {
-        /* Center the form horizontally */
-        margin: 10px auto; 
-        /* Limit the form width for smaller screens */
+        margin: 10px auto;
         max-width: 90%; 
     }
 }

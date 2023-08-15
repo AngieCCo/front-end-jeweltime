@@ -25,7 +25,6 @@ const Home = ({ metals }) => {
     console.log("Inside home@@@@@@")
     return (
         <Container className="home-section">
-            {/* Row 1 */}
             <Row className="mt-5 mb-6 custom-mb">
                 <Col xs={12}>
                     <h2 className="app-description mb-4 mt-5">
@@ -43,7 +42,6 @@ const Home = ({ metals }) => {
                     <p className="bold-text">Craft, Chronicle, Cherish with Jewel Time.</p>
                 </Col>
             </Row>
-            {/* Row 2 */}
             <Row className="mt-5 mb-5 align-items-center">
                 <Col xs={12} md={6}>
                     <h3 className="feature-heading mb-4">
@@ -57,7 +55,6 @@ const Home = ({ metals }) => {
                     <img className='image-container' src={jewelryBenchImg} alt="Jewelry bench with tools" />
                 </Col>
             </Row>
-            {/* Row 3 */}
             <Row className="mt-5 mb-5 align-items-center"> 
                 <Col xs={12} md={6}>
                     <img className='image-container' src={ringImg} alt="Silver sapphire ring" />
@@ -71,8 +68,6 @@ const Home = ({ metals }) => {
                     </p>
                 </Col>
             </Row>
-            {/* Row 4 */}
-            {/* Conditionally render the "Precious Metal Prices" section */}
             {metals ? (
                 <Row className="mt-5 mb-5 justify-content-center">
                     <Col xs={12} className="d-flex align-items-center flex-column mb-4 mt-5">
@@ -93,7 +88,6 @@ const Home = ({ metals }) => {
                     ))}
                 </Row>
             ) : (
-                // Display loading message while waiting for API call for metal prices
                 <Row className="mt-5 mb-5">
                     <Col xs={12} className="d-flex justify-content-center mb-4">
                         <h2 className="metal-cards-title">
