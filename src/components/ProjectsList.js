@@ -25,7 +25,7 @@ const ProjectsList = ({ displayedProjects, setSelectedProject, deleteProject }) 
             });
         };
         return (
-            <Carousel interval={null}>
+            <Carousel interval={null} variant="dark">
                 {listOfProjects(displayedProjects)}
                 {/* <ul className="projects__list no-bullet">{listOfProjects(displayedProjects)}</ul> */}
             </Carousel>

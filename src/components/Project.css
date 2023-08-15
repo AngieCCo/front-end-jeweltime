@@ -22,3 +22,9 @@
     list-style-type: none;
     /* padding: 0; */
 }
+
+.cardImage {
+    object-fit: contain;
+    border-radius: 55;
+    width: 5vw;
+}
