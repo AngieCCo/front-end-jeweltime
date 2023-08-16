@@ -22,7 +22,6 @@ function capitalizeFirstLetter(word) {
 }
 
 const Home = ({ metals }) => {
-    console.log("Inside home@@@@@@")
     return (
         <Container className="home-section">
             <Row className="mt-5 mb-6 custom-mb">
