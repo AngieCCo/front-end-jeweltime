@@ -174,6 +174,7 @@ function App() {
       .put(`${BACKEND_URL}/projects/${projectId}`, project)
       .then( (response) => {
         
+        console.log('updateProject success', response.data);
         const updatedProjects = displayedProjects.map( project => {
           if (project.projectId === projectId) {
             return response.data
@@ -181,6 +182,7 @@ function App() {
             return {...project}
           }
         })
+        console.log(updatedProjects)
         setDisplayedProjects(updatedProjects)
         setSelectedProject(INITIAL_PROJECT_DATA)
       })
