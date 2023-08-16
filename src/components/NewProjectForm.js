@@ -91,6 +91,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     value={projectFormData.startedAt}
                     onChange={anInputChanged}
                     placeholder="Enter project's starting date"
+                    required
                     ></input>
                 </div>
                 <div>
