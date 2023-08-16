@@ -24,7 +24,7 @@ p {
 }
 
 #root {
-  background: linear-gradient(45deg, #F5E3CC 0%, #7F5539 100%);
+  /* background: linear-gradient(45deg, #F5E3CC 0%, #7F5539 100%); */
   font-family: 'Montserrat', sans-serif;
   min-height: 100vh;
 }
