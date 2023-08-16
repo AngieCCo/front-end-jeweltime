@@ -276,11 +276,6 @@ function App() {
               />
             </div>
             <div>
-              <Map
-                selectedAccount={selectedAccount}
-              />
-            </div>
-            <div>
               <Footer/>
             </div>
       </div>
