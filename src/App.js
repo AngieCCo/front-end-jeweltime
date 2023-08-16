@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import SignInF from './components/SignInF';
 import AuthDetails from './components/AuthDetails';
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { auth } from '../src/firebase'
+import { auth } from '../src/firebase';
 import './App.css';
 
 // const BACKEND_URL = "http://127.0.0.1:5000";
@@ -170,6 +170,7 @@ function App() {
   const updateProject = (project) => {
 
     const projectId = project.projectId
+    console.log(projectId)
     axios
       .put(`${BACKEND_URL}/projects/${projectId}`, project)
       .then( (response) => {
@@ -272,6 +273,11 @@ function App() {
               <AuthDetails 
                 setDisplayedProjects={setDisplayedProjects}
                 setSelectedAccount={setSelectedAccount}
+              />
+            </div>
+            <div>
+              <Map
+                selectedAccount={selectedAccount}
               />
             </div>
             <div>
