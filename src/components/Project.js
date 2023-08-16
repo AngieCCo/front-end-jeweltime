@@ -20,7 +20,7 @@ const Project = ({ project, setSelectedProject, deleteProject }) => {
     return (
             <section className="projects">
                 <Card style={{ width: "32rem" }}>
-                    <Card.Img variant="top" src="/NewLogo.png" className='cardImage'/>
+                    <Card.Img variant="top" src="/CardHeaderTools.jpg" className='cardImage'/>
                         <Card.Body>
                             <Card.Title>
                                 <h1 className='project-name'>{project.projectName}</h1>
