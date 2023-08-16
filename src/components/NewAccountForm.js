@@ -27,10 +27,8 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
             createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user
-                console.log("Inside sigUp, userId: ", user.uid)
                 let userId = user.uid
                 setFirebaseId(userId)
-                console.log(firebaseId)
 
                 let userData = {
                     'firstName':firstName, 'lastName': lastName, 
@@ -38,9 +36,7 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
                     'firebaseId': userId,
                 }
 
-                console.log("About to create new user", userData)
                 createNewAccount(userData);
-                
                 alert("New Account Created! ✅")
             })
             .catch((error)=> {
@@ -52,14 +48,12 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
                 'accountId': accountId, 'firstName':firstName, 
                 'lastName': lastName, 'zipcode': zipcode, 'firebaseId': firebaseId
             }
-            console.log("About to update account", userData)
             updateAccount(userData)
             alert("Account Updated! ✅")
         }
     };
 
     const toggleDelete = () => {
-        console.log('delete button clicked!')
         deleteAccount(selectedAccount.accountId)
         alert("Account Deleted! 🗑️")
 
