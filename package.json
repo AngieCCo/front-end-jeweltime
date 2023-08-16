@@ -45,5 +45,8 @@
   },
   "devDependencies": {
     "html-webpack-plugin": "^5.5.3"
-  }
+  },
+  "engines": {
+    "node": "14.8.0"
+}
 }
