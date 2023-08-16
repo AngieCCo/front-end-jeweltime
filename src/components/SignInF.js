@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import './SignInF.css' 
-import toolsImg from '../assets/JewelrySix.jpg'; 
 
 const SignInF = ({ validateUser }) => {
     const [email, setEmail] = useState('');
@@ -67,7 +66,6 @@ const SignInF = ({ validateUser }) => {
                 </Card.Body>
             </div>
             </Card>
-            {/* <img src={toolsImg} alt="Close up of metalsmithing tools" className="tools-image" /> */}
         </div>
     )
 }

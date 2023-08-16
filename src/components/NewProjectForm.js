@@ -19,8 +19,6 @@ const INITIAL_FORM_DATA = {
 
 const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) => {
 
-    // Set initial values of project BEFORE setting the variable state
-    // If done before avoids re-rendering (looping)
     let currentProject = INITIAL_FORM_DATA
     if (selectedProject !== undefined) {
         currentProject = selectedProject
@@ -39,20 +37,13 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
 
     // Create new account form
     const handleSubmit = (event) => {
-        // ADDITION:
         event.preventDefault();
-        console.log("Handling submit", event)
-
-        // Output the data being sent to the backend
-        console.log("Project Form Data:", projectFormData);
 
         if (projectFormData.projectId === '' || projectFormData.projectId === undefined) {
-            console.log("Creating new project...");
             createNewProject(projectFormData);
             alert("New Project Created! ✅")
             setProjectFormData(INITIAL_FORM_DATA)
         } else {
-            console.log("Updating project...");
             updateProject(projectFormData);
             alert("Project Updated! ✅")
             setProjectFormData(INITIAL_FORM_DATA)
@@ -100,6 +91,7 @@ const NewProjectForm = ({ createNewProject, selectedProject, updateProject }) =>
                     value={projectFormData.startedAt}
                     onChange={anInputChanged}
                     placeholder="Enter project's starting date"
+                    required
                     ></input>
                 </div>
                 <div>

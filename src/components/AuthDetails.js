@@ -52,8 +52,6 @@ const AuthDetails = ( { setDisplayedProjects, setSelectedAccount }) => {
     let navigate = useNavigate()
     const userSignOut = () => {
         signOut(auth).then(() => {
-            console.log('Sign out successful')
-            // Here clean up projects
             let emptyListProjects = [INITIAL_FORM_DATA];
             setDisplayedProjects(emptyListProjects)
             setSelectedAccount(INITIAL_ACCOUNT_DATA)

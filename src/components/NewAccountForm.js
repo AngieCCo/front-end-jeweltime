@@ -17,7 +17,6 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
         setShowPassword(!showPassword);
     };
 
-    // Create new account form
     const signUp = (e) => {
 
         e.preventDefault();
@@ -27,25 +26,17 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
 
             createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed In!
                 const user = userCredential.user
-                console.log("Inside sigUp, userId: ", user.uid)
                 let userId = user.uid
                 setFirebaseId(userId)
-                console.log(firebaseId)
 
                 let userData = {
                     'firstName':firstName, 'lastName': lastName, 
                     'email': email, 'zipcode': zipcode,
-                    // CHANGE: USE THE UPDATED USERID DIRECTLY INSTEAD OF USING THE STATE
                     'firebaseId': userId,
                 }
 
-                console.log("About to create new user", userData)
-                // setSelectedAccount(userData)
                 createNewAccount(userData);
-                
-                // For alerts
                 alert("New Account Created! ✅")
             })
             .catch((error)=> {
@@ -57,16 +48,12 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
                 'accountId': accountId, 'firstName':firstName, 
                 'lastName': lastName, 'zipcode': zipcode, 'firebaseId': firebaseId
             }
-            console.log("About to update account", userData)
             updateAccount(userData)
             alert("Account Updated! ✅")
-            // setSelectedAccount(userData);
         }
     };
 
-    // Function linked to API call deleteAccount
     const toggleDelete = () => {
-        console.log('delete button clicked!')
         deleteAccount(selectedAccount.accountId)
         alert("Account Deleted! 🗑️")
 
@@ -74,8 +61,6 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
         setLastName('');
         setEmail('');
         setZipcode('');
-
-
     };
 
 
@@ -85,7 +70,6 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
                 <div className="signUp">
                     <h2 className="newAccount">Create an Account</h2>
                     <form className="form__container" onSubmit={signUp}>
-                        {/* <label htmlFor="id" id='accountId'>Account id: {selectedAccount.accountId}</label> */}
                         <div className="form-group">
                             <br/>
                             <label htmlFor="firstName" className="form-label">First Name</label>
@@ -158,7 +142,6 @@ const NewAccountForm = ({ selectedAccount, createNewAccount, updateAccount, dele
                                 {showPassword ? '🙈' : '👁'} 
                             </span>
                             </div>
-                            
                         </div>
                         <button type="submit" className="btn btn-success w-100 mt-2">Create / Update Account</button>
                     </form>

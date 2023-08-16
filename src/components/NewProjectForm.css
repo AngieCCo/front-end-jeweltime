@@ -15,3 +15,10 @@
     background-color: #7C9D96 !important;
     border-color: #4C4B16 !important;
 }
+
+@media (max-width: 768px) {
+    .newProjectForm {
+        margin: 10px auto;
+        max-width: 90%; 
+    }
+}

@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# front-end-jeweltime 💻 💎 🎨 📓 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+`front-end-jeweltime` is the frontend component of [Jewel Time](https://jeweltime.onrender.com), a web application that serves as a digital field notebook for jewelers. Designed to support the creative process, it offers features such as project tracking and retrieval of current precious metal prices. Crafted as a capstone project for Ada Developers Academy Cohort 19, it leverages React and Firebase Authentication to document metalsmithing projects.
 
-In the project directory, you can run:
+## Collaboration
 
-### `npm start`
+Created in collaboration with [Lyuda Kim](https://github.com/lyudarkim) who built the backend with Flask and MongoDB. [Angie Contreras](https://github.com/AngieCCo) built the frontend components using React, and both collaborated on the styling. Check out our [backend repository](https://github.com/lyudarkim/back-end-jeweltime).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React
+- React Router
+- Firebase Authentication
+- Bootstrap
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Fork, clone the repository, then install dependencies:
 
-### `npm run build`
+```bash
+git clone https://github.com/AngieCCo/front-end-jeweltime.git
+cd front-end-jeweltime
+yarn install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Running the Application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run the application locally, follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Navigate to the project root directory in your terminal.
+2. Run `yarn start` 
+   
+- For local development, you can use: `http://localhost:3000` or `http://127.0.0.1:3000`
 
-### `npm run eject`
+The URL for the deployed app is: `https://jeweltime.onrender.com/`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contributing 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you are interested in contributing to this project, please follow these steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Fork the repository
+2. Clone your fork locally
+3. Create a feature branch
+4. Make your changes and commit them
+5. Push the changes to your fork
+6. Submit a pull request with a description of the changes
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+For bug reports or feature requests, please open an issue on GitHub.
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.

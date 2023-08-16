@@ -8,8 +8,6 @@ import NewAccountForm from './components/NewAccountForm';
 import NewProjectForm from './components/NewProjectForm';
 import ProjectsList from './components/ProjectsList';
 import Footer from './components/Footer';
-import Map from './components/Map';
-// Components from video
 import SignInF from './components/SignInF';
 import AuthDetails from './components/AuthDetails';
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
@@ -36,59 +34,45 @@ function App() {
   const [selectedAccount, setSelectedAccount] = useState(INITIAL_ACCOUNT_DATA);
   const [displayedProjects, setDisplayedProjects] = useState(INITIAL_PROJECT_DATA);
   const [selectedProject, setSelectedProject] = useState(undefined)
-  // Variable to hold object for metals
   const [metals, setMetals] = useState(undefined)
 
 
-  // Route tested and it's working!!!!
   const createNewAccount = (newAccount) => {
-    console.log(newAccount)
+    
     axios
       .post(`${BACKEND_URL}/accounts`, newAccount)
       .then( (response) => {
         setSelectedAccount(response.data)
-        console.log('createNewAccount success', response.data);
-
-        console.log("HERE IS THE SELECTED ACCOUNT STATE VARIABLE&&&&&&&&&&&&&&&&")
-        console.log(selectedAccount);
-
       })
       .catch( (error) => {
         console.log('error', error)
       })
   }
 
-// Route tested and it's working!!!!
   const updateSelectedAccount = (userInfo) => {
     setSelectedAccount(userInfo);
   };
   
-  // Route tested and it's working!!!
   const updateAccount = (account) => {
 
-    console.log(account)
     const accountId = account.accountId
     axios
       .put(`${BACKEND_URL}/accounts/${accountId}`, account)
       .then( (response) => {
         setSelectedAccount(response.data)
-        console.log('updateAccount success', response.data);
       })
       .catch( (error) => {
         console.log('error', error)
       })
   }
 
-  // Route tested and it's working!!!
   const deleteAccount = (accountId) => {
     axios
     .delete(`${BACKEND_URL}/accounts/${accountId}`)
     .then( (response) => {
-      console.log("Response!:", response.data)
       const removedAccount = INITIAL_ACCOUNT_DATA;
       const removedProjects = INITIAL_PROJECT_DATA
 
-      console.log('deleteAccount success!', response.data)
       setSelectedAccount(removedAccount);
       setDisplayedProjects(removedProjects)
     })
@@ -99,11 +83,8 @@ function App() {
 
   const login = (firebaseUserCredential) => {
 
-    // Signed in 
     const user = firebaseUserCredential;
-    console.log("firebaseUserCredential:", user)
     let userFirebaseId = user.uid
-    console.log("user id!:", userFirebaseId)
 
     const userId = {"firebaseId": userFirebaseId};
 
@@ -111,9 +92,7 @@ function App() {
       axios
         .post(`${BACKEND_URL}/signin`, userId)
         .then( (response) => {
-          console.log("response data!", response.data)
           setSelectedAccount(response.data)
-          console.log('Sign in account success', response.data);
         })
     }
   }
@@ -130,12 +109,10 @@ function App() {
     }
 }, [])
 
-  // Route to validate sign in!!!
   const validateUser = (email, password) => {
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          console.log("INSIDE VALIDATE USER")
           login(userCredential.user)
         })
       .catch( (error) => {
@@ -143,25 +120,18 @@ function App() {
       })
   }
 
-  // Route to create a project working!!!
   const createNewProject = (newProject) => {
-    console.log('THIS IS THE SELECTED ACCOUNT!!!!!!!!!!!!!!!!!')
-    console.log(selectedAccount);
 
     if (selectedAccount.accountId && selectedAccount.accountId !== undefined) {
       newProject["accountId"] = selectedAccount.accountId
       axios
       .post(`${BACKEND_URL}/projects`, newProject)
       .then( (response) => {
-        // Before I was overwriting displayedProjects with an Object (new single project)
-        // Hence the map function couldn't iterate and it was throwing an error
         const projectsToRender = displayedProjects.map( project => {
             return {...project}
         })
         projectsToRender.push(response.data)
-        console.log("newDisplayedProjects:", projectsToRender)
         setDisplayedProjects(projectsToRender)
-        console.log('createNewProject success', response.data);
         setSelectedProject(INITIAL_PROJECT_DATA)
       })
       .catch( (error) => {
@@ -173,26 +143,18 @@ function App() {
     } 
   }
 
-  // Route to get all projects working!!!
   useEffect(() => {
     const getProjects = () => {
 
-      console.log("Inside getProjects@@@@@@@@@@@@")
-      console.log("selectedAccount.accountId", selectedAccount.accountId)
-
       if (selectedAccount.accountId && selectedAccount.accountId !== undefined) {
         const accountId = selectedAccount.accountId
-        console.log("account id:", accountId)
 
-        // Only if user id is present make the call
         axios
         .get(`${BACKEND_URL}/accounts/${accountId}/projects`)
         .then( (response) => {
           
-          console.log("projects user", response.data)
-          
           setDisplayedProjects(response.data);
-          console.log('getProjects success!', displayedProjects)
+
         })
         .catch( (error) => {
           console.log('error', error)
@@ -204,10 +166,9 @@ function App() {
     getProjects()
   }, [selectedAccount]);
 
-  // Route to update a project works!!!!
+
   const updateProject = (project) => {
 
-    console.log(project)
     const projectId = project.projectId
     console.log(projectId)
     axios
@@ -222,6 +183,7 @@ function App() {
             return {...project}
           }
         })
+        console.log(updatedProjects)
         setDisplayedProjects(updatedProjects)
         setSelectedProject(INITIAL_PROJECT_DATA)
       })
@@ -230,17 +192,14 @@ function App() {
       })
   }
 
-  // Route to delete a project works!!!
   const deleteProject = (projectId) => {
     axios
     .delete(`${BACKEND_URL}/projects/${projectId}`)
     .then( (response) => {
-      console.log("Response!:", response.data)
       const updateProjects = displayedProjects.filter(function (displayedProjects) {
         return displayedProjects.projectId !== projectId;
       });
 
-      console.log('deleteProject success!', response.data)
       setDisplayedProjects(updateProjects);
     })
     .catch( (error) => {
@@ -248,7 +207,6 @@ function App() {
     });
   }
   
-  // Function to format metals and exclude the timestamp
   const formatMetalsData = (metals) => {
     const metalsNames = ["gold", "silver", "platinum", "palladium"]
     const metalsFormatted = {}
@@ -264,7 +222,6 @@ function App() {
     return metalsFormatted
   }
 
-  // Route to get Metals, working!!!
   useEffect( () => {
       axios
       .get(`${BACKEND_URL}/prices`)
