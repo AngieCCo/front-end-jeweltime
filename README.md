@@ -4,6 +4,9 @@
 
 `front-end-jeweltime` is the frontend component of [Jewel Time](https://jeweltime.onrender.com), a web application that serves as a digital field notebook for jewelers. Designed to support the creative process, it offers features such as project tracking and retrieval of current precious metal prices. Crafted as a capstone project for Ada Developers Academy Cohort 19, it leverages React and Firebase Authentication to document metalsmithing projects.
 
+## App Demo
+Click [here](https://drive.google.com/file/d/1fa-csOp9JFmyW1o1pIDt2UUYx9X5L0QY/view?usp=drive_link) to watch the demo of our app
+
 ## Collaboration
 
 Created in collaboration with [Lyuda Kim](https://github.com/lyudarkim) who built the backend with Flask and MongoDB. [Angie Contreras](https://github.com/AngieCCo) built the frontend components using React, and both collaborated on the styling. Check out our [backend repository](https://github.com/lyudarkim/back-end-jeweltime).
